@@ -1,7 +1,7 @@
 # FoodApp-Android
 Fast Food app in react native
 
-An app developed with React native and redux in the front , and Node.js.
+An app developed with React native and redux in the front , and Node.js in the backend.
 
 The app is a fast food sales app.
 
