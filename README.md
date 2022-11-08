@@ -1,5 +1,5 @@
 # FoodApp-Android
-Fast Food app in react native
+Fast Food 
 
 An app developed with React native and redux in the frontend , and Node.js in the backend.
 
