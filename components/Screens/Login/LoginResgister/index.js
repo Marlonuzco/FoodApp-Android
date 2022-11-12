@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {renderIcon} from '../LoginForm';
 
+import {renderIcon} from '../LoginForm';
+import {renderIcon2} from '../LoginForm';
 import img1 from '../../../../src/images/fondo2.jpeg';
 import styles from './styles';
 
@@ -19,15 +20,15 @@ function LoginRegisterScreen({navigation}) {
       <ScrollView>
         <View style={styles.container0}>
           <View style={styles.container1}>
-            <Text style={styles.title}>Registrarse</Text>
-            <Text style={styles.tx1}>Ingrese sus datos</Text>
+            <Text style={styles.title}>Sign Up</Text>
+            <Text style={styles.tx1}>Enter your details</Text>
           </View>
           <View style={styles.inputsContainer}>
             <View style={styles.container2}>
-              <TextInput placeholder="Nombre" style={styles.input1} />
+              <TextInput placeholder="FirstName" style={styles.input1} />
             </View>
             <View style={styles.container2}>
-              <TextInput placeholder="Apellido" style={styles.input1} />
+              <TextInput placeholder="LastName" style={styles.input1} />
             </View>
           </View>
           <View style={styles.emailInputContainer}>
@@ -43,7 +44,7 @@ function LoginRegisterScreen({navigation}) {
             />
             <View style={styles.inputPassWordView}>
               <TextInput
-                placeholder="Contraseña"
+                placeholder="Password"
                 secureTextEntry={seePassword}
                 maxLength={20}
                 textContentType="password"
@@ -58,7 +59,7 @@ function LoginRegisterScreen({navigation}) {
           </View>
           <View style={styles.btns}>
             <TouchableOpacity style={styles.touchLoged}>
-              <Text style={styles.txTouch}>Registrarme</Text>
+              <Text style={styles.txTouch}>Sign Up {renderIcon2()}</Text>
             </TouchableOpacity>
           </View>
         </View>

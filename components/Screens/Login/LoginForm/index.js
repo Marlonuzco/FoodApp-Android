@@ -13,10 +13,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
 
 import img1 from './../../../../src/images/fondo2.jpeg';
-import {user, userDetails} from '../../../../utils/userDB';
+import {user} from '../../../../utils/getUser';
 import styles from './styles';
 
-function LoginForm({auth, navigation}) {
+function LoginForm({login, auth, navigation}) {
   const dispatch = useDispatch();
   const [error, setError] = useState('');
   const [seePassword, setSeePassWord] = useState(true);
@@ -30,12 +30,12 @@ function LoginForm({auth, navigation}) {
       const {email, password} = formValue;
 
       if (email !== user.email || password !== user.password) {
-        setError('the email or password is incorrect');
+        setError('The email or password is incorrect');
         console.log('El correo o la contraseña no son correctas');
       } else {
         dispatch({type: 'AUTH_LOGIN'});
         navigation.navigate('Desktop');
-        console.log('Login correcto', userDetails);
+        console.log('Login correcto');
       }
     },
   });
@@ -43,9 +43,9 @@ function LoginForm({auth, navigation}) {
   return (
     <>
       <ImageBackground source={img1} resizeMode="cover" style={styles.bgImg}>
-        <ScrollView style={styles.container0}>
+        <ScrollView>
           <View style={styles.container1}>
-            <Text style={styles.title}>Iniciar Sesión</Text>
+            <Text style={styles.title}>Log In</Text>
           </View>
           <View style={styles.container2}>
             <TextInput
@@ -63,7 +63,7 @@ function LoginForm({auth, navigation}) {
             <Text style={styles.error}>{formik.errors.email}</Text>
             <View style={styles.container3}>
               <TextInput
-                placeholder="Contraseña"
+                placeholder="Password"
                 secureTextEntry={seePassword}
                 maxLength={20}
                 textContentType="password"
@@ -86,10 +86,14 @@ function LoginForm({auth, navigation}) {
             <TouchableOpacity
               style={styles.Loginbtn}
               onPress={formik.handleSubmit}>
-              <Text style={styles.touchable3}>Login</Text>
+              <Text style={styles.touchable3}>Log in {renderIcon2()}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.touchable2}>
-              <Text style={styles.txtouchable2}>¿Olvidó su contraseña?</Text>
+            <TouchableOpacity
+              style={styles.touchable2}
+              onPress={() => {
+                navigation.navigate('RescuePass');
+              }}>
+              <Text style={styles.txtouchable2}>¿Forgot your password?</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -113,15 +117,19 @@ function validationSchema() {
       .required('The Email is required'),
     password: Yup.string()
       .required('The password is required')
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!'),
+      .min(5, 'The password is Too Short!')
+      .max(20, 'The password is Too Long!'),
   };
 }
 
 export function renderIcon(seePassword) {
   if (seePassword === true) {
-    return <Icon name="eye" size={25} />;
-  } else {
     return <Icon name="eye-slash" size={25} />;
+  } else {
+    return <Icon name="eye" size={25} color={'blue'} />;
   }
+}
+
+export function renderIcon2() {
+  return <Icon name="sign-in-alt" size={20} />;
 }

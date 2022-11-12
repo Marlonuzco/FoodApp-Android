@@ -8,6 +8,9 @@ import LoginScreen from './components/Screens/Login/index.js.js';
 import LoginForm from './components/Screens/Login/LoginForm/index.js';
 import LoginRegisterScreen from './components/Screens/Login/LoginResgister/index.js';
 import DesktopScreen from './components/Screens/Desktop/index';
+import AccountScreen from './components/Screens/Account/index';
+import CartScreen from './components/Screens/Others/index.js';
+import RescuePassWordScreen from './components/Screens/Login/PassWordRescue/index.js';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +41,21 @@ function App({auth, navigation}) {
             <Stack.Screen
               name="Register"
               component={LoginRegisterScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="RescuePass"
+              component={RescuePassWordScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Account"
+              component={AccountScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Cart"
+              component={CartScreen}
               options={{headerShown: false}}
             />
           </Stack.Navigator>

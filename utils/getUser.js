@@ -1,3 +1,5 @@
+import UserIMG from '../src/images/UserImg.png';
+
 export const user = {
   email: 'xmarlonuzco2002@gmail.com',
   username: 'marlon2002',
@@ -9,4 +11,5 @@ export const userDetails = {
   firstname: 'Marlon',
   lastName: 'Uzcátegui',
   email: 'xmarlonuzco2002@gmail.com',
+  image: UserIMG,
 };

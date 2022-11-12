@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
 
+const bgColor1 = 'rgba(0, 0, 0, 0.6)';
+const bgColor2 = 'rgba(52, 52, 52, 0.8)';
+export const azul = 'blue';
+
 const styles = StyleSheet.create({
   bgImg: {
     flex: 1,

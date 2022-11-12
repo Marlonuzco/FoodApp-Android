@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-function OthersScreen() {
+function CartScreen() {
   return (
     <>
       <View>
-        <Text>OtherScreen</Text>
+        <Text>CartScreen</Text>
       </View>
     </>
   );
 }
 
-export default OthersScreen;
+export default CartScreen;

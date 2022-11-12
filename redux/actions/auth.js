@@ -1,10 +1,11 @@
 import {AUTH_LOGGED, AUTH_LOGIN, AUTH_LOGOUT} from '../reducer/auth';
 
-export const setSession = userInfo => ({
+/* export const setSession = userInfo => ({
   type: AUTH_LOGGED,
-  userInfo,
+  userInfo: {},
+  user: {},
 });
-
+ */
 export const login = () => ({
   type: AUTH_LOGIN,
 });

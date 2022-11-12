@@ -1,11 +1,16 @@
 import {configureStore} from '@reduxjs/toolkit';
-import auth from './reducer/auth';
+import {legacy_createStore as createStore} from '@reduxjs/toolkit';
+import {persistStore} from 'redux-persist';
+import thunk from 'redux-thunk';
+
+import reducers from './reducer/index';
 
 export const store = configureStore({
-  reducer: {
-    auth,
-  },
+  reducer: reducers,
+  middleware: [thunk],
 });
+
+export const persistor = persistStore(store);
 
 console.log('Initial state', store.getState());
 store.subscribe(() => {

@@ -67,15 +67,16 @@ const styles = StyleSheet.create({
   },
   touchLoged: {
     backgroundColor: 'blue',
-    borderRadius: 12,
     height: 50,
-    width: 100,
-    justifyContent: 'center',
+    width: 120,
+    borderRadius: 12,
     alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
   },
   txTouch: {
     color: 'white',
-    fontSize: 15,
+    fontSize: 20,
   },
   inputPassWordView: {
     flexDirection: 'row',

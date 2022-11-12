@@ -16,17 +16,17 @@ function Login({navigation}) {
           <TouchableOpacity
             style={styles.touchables}
             onPress={() => navigation.navigate('LoginForm')}>
-            <Text style={styles.touchableText}>Iniciar sesión</Text>
+            <Text style={styles.touchableText}>Log in</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.touchables}
             onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.touchableText}>Registrarse</Text>
+            <Text style={styles.touchableText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.container3}>
           <Text style={styles.footer}>
-            Development by Marlon Uzcátegui © 2022
+            Developed by Marlon Uzcátegui © 2022
           </Text>
         </View>
       </ImageBackground>
