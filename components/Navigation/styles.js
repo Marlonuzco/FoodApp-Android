@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   NavigatorStyle: {
     backgroundColor: 'black',
   },
-  /* tabbar: {
+  tabbar: {
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     padding: 5,
     backgroundColor: bgColor1,
-  }, */
+  },
 });
 
 export default styles;

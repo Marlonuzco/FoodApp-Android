@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import GetData from '../../../services/index';
 import styles from './styles';
 import Navigation from '../../Navigation';
 

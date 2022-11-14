@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import {
   View,
@@ -9,14 +9,32 @@ import {
   ImageBackground,
 } from 'react-native';
 
+import {axiosInstance} from '../../../axios';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import ImgBg1 from '../../../src/images/fondoAccount1.jpg';
+import ImgBg1 from '../../../src/images/fondo2.jpeg';
 import {userDetails} from '../../../utils/getUser';
 
 import styles from './styles';
+import {set} from 'immer/dist/internal';
 
 function AccountScreen({navigation}) {
+  const [userData, setUserData] = useState([]);
+  const [Fail, setFail] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const response = await axiosInstance.get('/userDetails');
+        setUserData(response.data);
+      } catch (error) {
+        console.log(error);
+        setFail(true);
+      }
+    };
+    getUserData();
+  }, [setUserData]);
+
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
@@ -26,12 +44,20 @@ function AccountScreen({navigation}) {
           <Image style={styles.img1} source={userDetails.image} />
           <Text>Profile Photo</Text>
         </View>
-        <View style={styles.container2}>
-          <Text style={styles.tx2}>E-mail: {userDetails.email}</Text>
-          <Text style={styles.tx2}>Firstname: {userDetails.firstname}</Text>
-          <Text style={styles.tx2}>LastName: {userDetails.lastName}</Text>
-          <Text style={styles.tx2}>Username: {userDetails.username}</Text>
-        </View>
+        {Fail ? (
+          <View style={styles.container2}>
+            <Text style={styles.title2}>Error en la carga de datos</Text>
+          </View>
+        ) : (
+          userData.map(item => (
+            <View style={styles.container2} key={item.id}>
+              <Text style={styles.tx2}>E-mail: {item.email}</Text>
+              <Text style={styles.tx2}>Firstname: {item.firstname}</Text>
+              <Text style={styles.tx2}>LastName: {item.lastName}</Text>
+              <Text style={styles.tx2}>Username: {item.username}</Text>
+            </View>
+          ))
+        )}
         <View style={styles.container3}>
           <TouchableOpacity
             style={styles.touchable1}

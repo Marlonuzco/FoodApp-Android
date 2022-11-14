@@ -6,6 +6,7 @@ import HomeSreen from '../Screens/Home/index';
 import FavoritesSreen from '../Screens/FavoriteScreen/index';
 import AccountSreen from '../Screens/Account/index';
 import CartScreen from '../Screens/Others/index';
+import CategoriesScreen from '../Screens/Categories/index';
 
 import styles from './styles';
 
@@ -28,6 +29,16 @@ function Navigation() {
             tabBarLabel: 'Home',
             tabBarIcon: ({size, color}) => (
               <Icon name="home" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Categories"
+          component={CategoriesScreen}
+          options={{
+            tabBarLabel: 'Categories',
+            tabBarIcon: ({size, color}) => (
+              <Icon name="list" size={size} color={color} />
             ),
           }}
         />

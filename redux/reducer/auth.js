@@ -1,10 +1,12 @@
 export const AUTH_LOGGED = 'AUTH_LOGGED';
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 const auth_initial_state = {
   isLogged: false,
   userInfo: {},
+  error: false,
 };
 
 const auth = (authInfo = auth_initial_state, action) => {
@@ -19,6 +21,11 @@ const auth = (authInfo = auth_initial_state, action) => {
       return {
         ...authInfo,
         isLogged: true,
+      };
+    case AUTH_ERROR:
+      return {
+        ...authInfo,
+        error: true,
       };
     case AUTH_LOGOUT:
       return auth_initial_state;
