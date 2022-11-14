@@ -15,7 +15,6 @@ import ImgBg1 from '../../../src/images/fondo2.jpeg';
 import {userDetails} from '../../../utils/getUser';
 
 import styles from './styles';
-import {set} from 'immer/dist/internal';
 
 function AccountScreen({navigation}) {
   const [userData, setUserData] = useState([]);
