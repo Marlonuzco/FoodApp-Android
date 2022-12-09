@@ -17,10 +17,11 @@ function Navigation() {
     <>
       <Tab.Navigator
         screenOptions={{
-          /* tabBarStyle: styles.tabbar, */
-          /* tabBarInactiveTintColor: '#bdc3c7', */
+          tabBarStyle: styles.tabbar,
+          tabBarInactiveTintColor: '#bdc3c7',
           headerShown: false,
           /* tabBarShowLabel: false, */
+          tabBarHideOnKeyboard: true,
         }}>
         <Tab.Screen
           name="Home"
@@ -32,7 +33,7 @@ function Navigation() {
             ),
           }}
         />
-        <Tab.Screen
+        {/*  <Tab.Screen
           name="Categories"
           component={CategoriesScreen}
           options={{
@@ -41,7 +42,7 @@ function Navigation() {
               <Icon name="list" size={size} color={color} />
             ),
           }}
-        />
+        /> */}
         <Tab.Screen
           name="Cart"
           component={CartScreen}
