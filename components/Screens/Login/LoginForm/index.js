@@ -34,8 +34,8 @@ function LoginForm({login, auth, navigation}) {
         console.log('El correo o la contraseña no son correctas');
       } else {
         dispatch({type: 'AUTH_LOGIN'});
-        navigation.navigate('Desktop');
-        console.log('Login correcto');
+        navigation.navigate('Logged');
+        /* console.log('Login correcto'); */
       }
     },
   });

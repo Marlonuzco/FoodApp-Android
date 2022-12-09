@@ -12,7 +12,7 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-console.log('Initial state', store.getState());
+/* console.log('Initial state', store.getState());
 store.subscribe(() => {
   console.log('stateChange', store.getState());
-});
+}); */
