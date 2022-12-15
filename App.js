@@ -46,13 +46,11 @@ function App({auth, navigation}) {
         <NavigationContainer>
           <Stack.Navigator>
             {auth.isLogged ? (
-              <>
-                <Stack.Screen
-                  name="Logged"
-                  component={LoggedScreen}
-                  options={{headerShown: false}}
-                />
-              </>
+              <Stack.Screen
+                name="Logged"
+                component={LoggedScreen}
+                options={{headerShown: false}}
+              />
             ) : (
               <Stack.Screen
                 name="LoginScreens"

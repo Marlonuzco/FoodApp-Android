@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeSreen from '../Screens/Home/index';
 import FavoritesSreen from '../Screens/FavoriteScreen/index';
 import AccountSreen from '../Screens/Account/index';
-import CartScreen from '../Screens/Others/index';
+import CartScreen from '../Screens/Cart/index';
 import CategoriesScreen from '../Screens/Categories/index';
 
 import styles from './styles';
@@ -18,10 +18,11 @@ function Navigation() {
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: styles.tabbar,
-          tabBarInactiveTintColor: '#bdc3c7',
+          tabBarInactiveTintColor: 'white',
           headerShown: false,
           /* tabBarShowLabel: false, */
           tabBarHideOnKeyboard: true,
+          tabBarActiveTintColor: 'black',
         }}>
         <Tab.Screen
           name="Home"

@@ -30,25 +30,11 @@ export const Productes = {
       id: 1,
       name: 'Pizzas',
       photo: pizzaIcon,
-      Pizzas: [
-        {
-          id: 1,
-          name: 'Pizza Mamamia',
-          photo: img1,
-        },
-      ],
     },
     {
       id: 2,
       name: 'Burguers',
       photo: burguerIcon,
-      hamburguesas: [
-        {
-          id: 1,
-          name: 'Hamburguesa 1',
-          photo: img3,
-        },
-      ],
     },
     {
       id: 3,
@@ -59,13 +45,6 @@ export const Productes = {
       id: 4,
       name: 'Tacos',
       photo: tacosIcon,
-      Tacos: [
-        {
-          id: 1,
-          name: 'Tacos 1',
-          photo: img2,
-        },
-      ],
     },
     {
       id: 5,
@@ -76,6 +55,29 @@ export const Productes = {
       id: 6,
       name: 'Rices',
       photo: arrozIcon,
+    },
+  ],
+  Favorites: [
+    {
+      id: 1,
+      name: 'Hot Dog',
+      photo: hotDogIcon,
+      description: 'Traditional american Hot Dog',
+      price: '10',
+    },
+    {
+      id: 2,
+      name: 'Hamburguesa 1',
+      photo: burguerIcon,
+      description: 'Traditional american burguer',
+      price: '20',
+    },
+    {
+      id: 3,
+      name: 'Pizza Mamamia',
+      photo: pizzaIcon,
+      description: 'Traditional italian pizza',
+      price: '15',
     },
   ],
 };

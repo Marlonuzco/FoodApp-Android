@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const bgColor1 = 'rgba(0, 0, 0, 0.6)';
 const bgColor2 = 'rgba(52, 52, 52, 0.8)';
-export const azul = 'blue';
+const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
   bgImg: {
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Loginbtn: {
-    backgroundColor: 'blue',
+    backgroundColor: bgColor5,
     height: 50,
     width: 100,
     borderRadius: 12,

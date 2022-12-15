@@ -126,7 +126,7 @@ export function renderIcon(seePassword) {
   if (seePassword === true) {
     return <Icon name="eye-slash" size={25} />;
   } else {
-    return <Icon name="eye" size={25} color={'blue'} />;
+    return <Icon name="eye" size={25} color={'#BF1A1A'} />;
   }
 }
 

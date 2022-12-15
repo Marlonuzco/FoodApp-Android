@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+const bgColor5 = '#BF1A1A';
+
 const styles = StyleSheet.create({
   bgImg: {
     flex: 1,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   touchLoged: {
-    backgroundColor: 'blue',
+    backgroundColor: bgColor5,
     height: 50,
     width: 120,
     borderRadius: 12,
