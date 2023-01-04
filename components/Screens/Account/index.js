@@ -26,13 +26,11 @@ function AccountScreen({navigation}) {
         const response = await axiosInstance.get('/user');
         setUserData(response.data);
       } catch (error) {
-        /*  console.log(error); */
         setFail(true);
       }
     };
     getUserData();
   }, [setUserData]);
-  /* console.log(userData); */
 
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>

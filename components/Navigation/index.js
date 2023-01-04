@@ -6,7 +6,6 @@ import HomeSreen from '../Screens/Home/index';
 import FavoritesSreen from '../Screens/FavoriteScreen/index';
 import AccountSreen from '../Screens/Account/index';
 import CartScreen from '../Screens/Cart/index';
-import CategoriesScreen from '../Screens/Categories/index';
 
 import styles from './styles';
 
@@ -17,12 +16,12 @@ function Navigation() {
     <>
       <Tab.Navigator
         screenOptions={{
-          tabBarStyle: styles.tabbar,
-          tabBarInactiveTintColor: 'white',
-          headerShown: false,
-          /* tabBarShowLabel: false, */
+          /* tabBarStyle: styles.tabbar, */
+          tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
-          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'black',
+          headerShown: false,
+          tabBarActiveTintColor: '#BF1A1A',
         }}>
         <Tab.Screen
           name="Home"
@@ -34,16 +33,6 @@ function Navigation() {
             ),
           }}
         />
-        {/*  <Tab.Screen
-          name="Categories"
-          component={CategoriesScreen}
-          options={{
-            tabBarLabel: 'Categories',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="list" size={size} color={color} />
-            ),
-          }}
-        /> */}
         <Tab.Screen
           name="Cart"
           component={CartScreen}
@@ -60,7 +49,7 @@ function Navigation() {
           options={{
             tabBarLabel: 'Favorites',
             tabBarIcon: ({size, color}) => (
-              <Icon name="heart" size={size} color={color} />
+              <Icon name="heart" size={size} color={color} solid={true} />
             ),
           }}
         />

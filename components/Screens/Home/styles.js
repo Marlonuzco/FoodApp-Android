@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: bgColor5,
-    marginLeft: 15,
   },
   title2: {
     fontSize: 20,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     width: 90,
     borderRadius: 20,
     margin: 10,
-    padding: 5,
+    padding: 2,
   },
   itemContainer2: {
     width: 100,
@@ -112,6 +111,7 @@ const styles = StyleSheet.create({
     width: 130,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
   },
   tx1: {
     fontSize: 20,
@@ -124,13 +124,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   img2: {
-    height: 70,
-    width: 70,
-    borderRadius: 80,
+    height: 50,
+    width: 80,
   },
   searchIcon: {
     color: bgColor1,
-    marginLeft: -35,
+    marginLeft: -40,
   },
   touchable2: {
     marginLeft: '55%',
@@ -178,7 +177,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 5,
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 13,
   },
   addbtn: {
     backgroundColor: bgColor5,
@@ -192,7 +191,22 @@ const styles = StyleSheet.create({
   txAddBtn: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 12,
+  },
+  tx3: {
+    color: 'white',
+  },
+  container7: {
+    backgroundColor: bgColor5,
+    height: 35,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  tx4: {
+    color: 'white',
+    margin: 8,
   },
 });
 

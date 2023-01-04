@@ -25,14 +25,24 @@ function LoginRegisterScreen({navigation}) {
           </View>
           <View style={styles.inputsContainer}>
             <View style={styles.container2}>
-              <TextInput placeholder="FirstName" style={styles.input1} />
+              <TextInput
+                placeholder="FirstName"
+                style={styles.input1}
+                placeholderTextColor={'grey'}
+                va
+              />
             </View>
             <View style={styles.container2}>
-              <TextInput placeholder="LastName" style={styles.input1} />
+              <TextInput
+                placeholder="LastName"
+                style={styles.input1}
+                placeholderTextColor={'grey'}
+              />
             </View>
           </View>
           <View style={styles.emailInputContainer}>
             <TextInput
+              placeholderTextColor={'grey'}
               autoCapitalize="none"
               placeholder="Username"
               style={styles.emailInput}
@@ -41,9 +51,11 @@ function LoginRegisterScreen({navigation}) {
               autoCapitalize="none"
               placeholder="E-mail"
               style={styles.emailInput}
+              placeholderTextColor={'grey'}
             />
             <View style={styles.inputPassWordView}>
               <TextInput
+                placeholderTextColor={'grey'}
                 placeholder="Password"
                 secureTextEntry={seePassword}
                 maxLength={20}

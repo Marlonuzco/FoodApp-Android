@@ -3,6 +3,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer} from 'redux-persist';
 
 import auth from './auth';
+import cart from './cart';
+import favorites from './favorites';
+import products from './products';
 
 const persistConfig = {
   key: 'root',
@@ -11,4 +14,7 @@ const persistConfig = {
 
 export default combineReducers({
   auth: persistReducer(persistConfig, auth),
+  favorites: persistReducer(persistConfig, favorites),
+  products: persistReducer(persistConfig, products),
+  cart,
 });

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   tabbar: {
     position: 'absolute',
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor1,
     margin: 10,
     borderRadius: 20,
   },

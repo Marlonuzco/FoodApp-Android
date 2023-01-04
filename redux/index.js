@@ -1,5 +1,4 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {legacy_createStore as createStore} from '@reduxjs/toolkit';
 import {persistStore} from 'redux-persist';
 import thunk from 'redux-thunk';
 

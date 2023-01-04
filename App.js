@@ -12,7 +12,7 @@ import RescuePassWordScreen from './components/Screens/Login/PassWordRescue/inde
 
 const Stack = createStackNavigator();
 
-const LoginScreens = ({auth, navigation}) => {
+const LoginScreens = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen

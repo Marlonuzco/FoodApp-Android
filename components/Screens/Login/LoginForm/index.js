@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
 
 import img1 from './../../../../src/images/fondo2.jpeg';
-import {user} from '../../../../utils/getUser';
+import {users} from '../../../../utils/getUser';
 import styles from './styles';
 
 function LoginForm({login, auth, navigation}) {
@@ -28,15 +28,15 @@ function LoginForm({login, auth, navigation}) {
     onSubmit: formValue => {
       setError('');
       const {email, password} = formValue;
-
-      if (email !== user.email || password !== user.password) {
-        setError('The email or password is incorrect');
-        console.log('El correo o la contraseña no son correctas');
-      } else {
-        dispatch({type: 'AUTH_LOGIN'});
-        navigation.navigate('Logged');
-        /* console.log('Login correcto'); */
-      }
+      auth.users.map(e => {
+        const values = e;
+        if (email !== values.email || password !== values.password) {
+          setError('The email or password is incorrect');
+        } else {
+          dispatch({type: 'AUTH_LOGIN'});
+          navigation.navigate('Logged');
+        }
+      });
     },
   });
 
@@ -49,6 +49,7 @@ function LoginForm({login, auth, navigation}) {
           </View>
           <View style={styles.container2}>
             <TextInput
+              placeholderTextColor={'grey'}
               placeholder="E-mail"
               keyboardType="email-address"
               autoCompleteType="email"
@@ -63,6 +64,7 @@ function LoginForm({login, auth, navigation}) {
             <Text style={styles.error}>{formik.errors.email}</Text>
             <View style={styles.container3}>
               <TextInput
+                placeholderTextColor={'grey'}
                 placeholder="Password"
                 secureTextEntry={seePassword}
                 maxLength={20}
@@ -124,7 +126,7 @@ function validationSchema() {
 
 export function renderIcon(seePassword) {
   if (seePassword === true) {
-    return <Icon name="eye-slash" size={25} />;
+    return <Icon name="eye-slash" size={25} color={'black'} />;
   } else {
     return <Icon name="eye" size={25} color={'#BF1A1A'} />;
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDispatch, connect} from 'react-redux';
 import {
   View,
   Text,
@@ -9,36 +10,55 @@ import {
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {addToCart} from '../../../redux/actions/cart';
 
-import {Productes} from '../../../utils/getUser';
-import icon1 from '../../../src/images/iconos/Icon1.png';
+import {Products} from '../../../utils/getUser';
+import icon1 from '../../../src/images/iconos/icon2.png';
 import Delivery from '../../../src/images/Delivery.png';
 
 import styles from './styles';
 
-const renderItem = ({navigation, item}) => (
+//categories list component
+const RenderItem = ({navigation, item}) => (
   <View style={styles.itemContainer}>
-    <TouchableOpacity style={styles.touchable1}>
+    <TouchableOpacity
+      style={styles.touchable1}
+      onPress={() => {
+        navigation.navigate('ProductsCategories', item);
+      }}>
       <Image style={styles.imgItem} source={item.photo} />
       <Text style={styles.itemTitle}>{item.name}</Text>
     </TouchableOpacity>
   </View>
 );
 
-const renderItem2 = ({navigation, item}) => (
-  <View style={styles.itemContainer2}>
-    <Image style={styles.imgItem2} source={item.photo} />
-    <View style={styles.itemview2}>
-      <Text style={styles.itemTitle2}>{item.name}</Text>
-      <Text style={styles.price}>Sales for: {item.price}$</Text>
-      <TouchableOpacity style={styles.addbtn}>
-        <Text style={styles.txAddBtn}>Add to cart +</Text>
+//popular list component
+const RenderItem2 = ({item, navigation, index}) => {
+  const dispatch = useDispatch();
+  return (
+    <View style={styles.itemContainer2}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Products', item);
+        }}>
+        <Image style={styles.imgItem2} source={item.photo} />
       </TouchableOpacity>
+      <View style={styles.itemview2}>
+        <Text style={styles.itemTitle2}>{item.name}</Text>
+        <Text style={styles.price}>Sales for: {item.price}$</Text>
+        <TouchableOpacity
+          style={styles.addbtn}
+          onPress={() => {
+            dispatch(addToCart(item));
+          }}>
+          <Text style={styles.txAddBtn}>Add to cart {renderIcon2()}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
-function HomeSreen({navigation}) {
+function HomeSreen({navigation, data, products}) {
   return (
     <ScrollView style={styles.scrollview}>
       <View style={styles.container1}>
@@ -61,41 +81,64 @@ function HomeSreen({navigation}) {
           <Image source={Delivery} style={styles.imgDelivey} />
           <View style={styles.container6}>
             <Text style={styles.tx2}>Promotions</Text>
-            <Text>¡Free Deliverys for this month!</Text>
+            <Text style={styles.tx3}>¡Free Deliverys for this month!</Text>
           </View>
         </View>
       </View>
       <View>
-        <Text style={styles.title2}>Categories</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Categories');
+          }}>
+          <Text style={styles.title2}>Categories</Text>
+        </TouchableOpacity>
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={Productes.categories}
+          data={Products.categories}
           keyExtractor={item => item.id}
-          renderItem={renderItem}
+          renderItem={item => (
+            <RenderItem navigation={navigation} item={item.item} />
+          )}
         />
       </View>
       <Text style={styles.title2}>Popular</Text>
       <View style={styles.container4}>
+        {/* popular list */}
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={Productes.Favorites}
+          data={products.Favorites}
           keyExtractor={item => item.id}
-          renderItem={renderItem2}
+          renderItem={item => (
+            <RenderItem2
+              navigation={navigation}
+              item={item.item}
+              data={data}
+              index={item.index}
+            />
+          )}
           showsVerticalScrollIndicator={false}
         />
       </View>
-      <Text style={styles.title2}>Drinks</Text>
+      <View style={styles.container7}>
+        <Text style={styles.tx4}>! Order now !</Text>
+        <Text style={styles.tx4}>! Order now !</Text>
+        <Text style={styles.tx4}>! Order now !</Text>
+        <Text style={styles.tx4}>! Order now !</Text>
+      </View>
     </ScrollView>
   );
 }
+export default connect(store => ({
+  data: store.cart,
+  products: store.products,
+}))(HomeSreen);
 
-function renderIconsearch() {
+export function renderIconsearch() {
   return <Icon name="search" size={25} style={styles.searchIcon} />;
 }
-function renderIcon1() {
-  return <Icon name="outdent" size={25} color={'white'} />;
-}
 
-export default HomeSreen;
+function renderIcon2() {
+  return <Icon name="shopping-cart" size={12} style={styles.icon} />;
+}

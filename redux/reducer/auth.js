@@ -1,3 +1,4 @@
+//login
 export const AUTH_LOGGED = 'AUTH_LOGGED';
 export const AUTH_LOGIN = 'AUTH_LOGIN';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
@@ -7,6 +8,14 @@ const auth_initial_state = {
   isLogged: false,
   userInfo: {},
   error: false,
+  users: [
+    {
+      id: 0,
+      email: 'xmarlonuzco2002@gmail.com',
+      username: 'marlon2002',
+      password: '123456',
+    },
+  ],
 };
 
 const auth = (authInfo = auth_initial_state, action) => {
@@ -33,5 +42,4 @@ const auth = (authInfo = auth_initial_state, action) => {
       return authInfo;
   }
 };
-
 export default auth;

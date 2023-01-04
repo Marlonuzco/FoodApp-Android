@@ -7,15 +7,15 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import {Products} from '../../../utils/getUser';
-import {renderIconsearch} from '../Home/index';
+import {Products} from '../../../../utils/getUser';
+import {renderIconsearch} from '../../Home/index';
 
 import styles from './styles';
 
-const RenderItem = ({item, navigation}) => (
+const RenderItem = ({item, navigation, route}) => (
   <TouchableOpacity
     onPress={() => {
-      navigation.navigate('ProductsCategories', item);
+      navigation.navigate('Products', item);
     }}>
     <View style={styles.itemContainer}>
       <Image style={styles.imgItem} source={item.photo} />
@@ -24,11 +24,11 @@ const RenderItem = ({item, navigation}) => (
   </TouchableOpacity>
 );
 
-function CategoriesSreen({navigation}) {
+function ProductsCategories({route, navigation}) {
   return (
     <>
       <View style={styles.container1}>
-        <Text style={styles.title1}>Categories</Text>
+        <Text style={styles.title1}>{route.params.name}</Text>
         <View style={styles.container2}>
           <TextInput
             style={styles.input}
@@ -40,7 +40,7 @@ function CategoriesSreen({navigation}) {
         </View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={Products.categories}
+          data={route.params.products}
           keyExtractor={item => item.id}
           renderItem={item => (
             <RenderItem navigation={navigation} item={item.item} />
@@ -51,4 +51,4 @@ function CategoriesSreen({navigation}) {
   );
 }
 
-export default CategoriesSreen;
+export default ProductsCategories;

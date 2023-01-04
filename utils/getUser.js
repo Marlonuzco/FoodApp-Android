@@ -10,74 +10,191 @@ import pastaIcon from '../src/images/iconos/pasta1.png';
 import arrozIcon from '../src/images/iconos/arroz2.png';
 import hotDogIcon from '../src/images/iconos/hotdog1.png';
 
-export const user = {
-  email: 'xmarlonuzco2002@gmail.com',
-  username: 'marlon2002',
-  password: '123456',
-};
+export const users = [
+  {
+    id: 0,
+    email: 'xmarlonuzco2002@gmail.com',
+    username: 'marlon2002',
+    password: '123456',
+  },
+  {
+    id: 1,
+    email: 'xmarlonuzco2003@gmail.com',
+    username: 'marlon2002',
+    password: '1234567',
+  },
+];
 
-export const userDetails = {
+/* export const userDetails = {
   username: 'marlon2002',
   firstname: 'Marlon',
   lastName: 'Uzcátegui',
   email: 'xmarlonuzco2002@gmail.com',
   image: UserIMG,
-};
+}; */
 
-export const Productes = {
+export const Products = {
   categories: [
     {
-      id: 1,
+      id: 0,
       name: 'Pizzas',
       photo: pizzaIcon,
+      products: [
+        {
+          id: 1,
+          name: 'Pizza Mamamia',
+          photo: pizzaIcon,
+          description: 'Traditional italian pizza',
+          price: 12,
+          counter: 1,
+          totalPrice: 12,
+          inFavorites: false,
+        },
+        {
+          id: 2,
+          name: 'Pizza 2',
+          price: 14,
+          photo: pizzaIcon,
+          description:
+            'Honolulú pizza with pepperoni and parmesan cheese with pineapple cuts',
+          counter: 1,
+          totalPrice: 14,
+          inFavorites: false,
+        },
+      ],
+    },
+    {
+      id: 1,
+      name: 'Burguers',
+      photo: burguerIcon,
+      products: [
+        {
+          id: 3,
+          name: 'Burguer 1',
+          photo: burguerIcon,
+          description: 'Traditional american burguer',
+          price: 10,
+          counter: 1,
+          totalPrice: 10,
+          inFavorites: false,
+        },
+        {
+          id: 4,
+          name: 'Burguer 2',
+          price: 12,
+          photo: burguerIcon,
+          description: 'Venezuelan Burguer with salad and cheddar cheese',
+          counter: 1,
+          totalPrice: 12,
+          inFavorites: false,
+        },
+      ],
     },
     {
       id: 2,
-      name: 'Burguers',
-      photo: burguerIcon,
+      name: 'Hot Dogs',
+      photo: hotDogIcon,
+      products: [
+        {
+          id: 5,
+          name: 'Hot Dog',
+          photo: hotDogIcon,
+          description: 'Traditional american Hot Dog',
+          price: 8,
+          counter: 1,
+          totalPrice: 8,
+          inFavorites: false,
+        },
+        {
+          id: 6,
+          name: 'Hot Dog 2',
+          photo: hotDogIcon,
+          description: 'Venezuelan hot dog with ketchup and mustad',
+          price: 11,
+          counter: 1,
+          totalPrice: 11,
+          inFavorites: false,
+        },
+      ],
     },
     {
       id: 3,
-      name: 'Hot Dogs',
-      photo: hotDogIcon,
+      name: 'Tacos',
+      photo: tacosIcon,
+      products: [
+        {
+          id: 7,
+          name: 'Tacos 1',
+          photo: tacosIcon,
+          description: 'Tacos with meet',
+          price: 9,
+          counter: 1,
+          totalPrice: 9,
+          inFavorites: false,
+        },
+        {
+          id: 8,
+          name: 'Tacos Mexicans',
+          photo: tacosIcon,
+          description: 'Traditional mexican tacos',
+          price: 13.5,
+          counter: 1,
+          totalPrice: 13.5,
+          inFavorites: false,
+        },
+      ],
     },
     {
       id: 4,
-      name: 'Tacos',
-      photo: tacosIcon,
-    },
-    {
-      id: 5,
       photo: pastaIcon,
       name: 'Pastas',
     },
     {
-      id: 6,
+      id: 5,
       name: 'Rices',
       photo: arrozIcon,
     },
   ],
   Favorites: [
     {
-      id: 1,
+      id: 9,
       name: 'Hot Dog',
       photo: hotDogIcon,
       description: 'Traditional american Hot Dog',
-      price: '10',
+      price: 8,
+      counter: 1,
+      totalPrice: 8,
+      inFavorites: false,
     },
     {
-      id: 2,
-      name: 'Hamburguesa 1',
+      id: 10,
+      name: 'Burguer 1',
       photo: burguerIcon,
       description: 'Traditional american burguer',
-      price: '20',
+      price: 10,
+      counter: 1,
+      totalPrice: 10,
+      inFavorites: false,
     },
     {
-      id: 3,
+      id: 11,
       name: 'Pizza Mamamia',
       photo: pizzaIcon,
       description: 'Traditional italian pizza',
-      price: '15',
+      price: 12,
+      counter: 1,
+      totalPrice: 12,
+      inFavorites: false,
+    },
+    {
+      id: 12,
+      name: 'Tacos Mexicans',
+      photo: tacosIcon,
+      description: 'Traditional mexican tacos',
+      price: 13.5,
+      counter: 1,
+      totalPrice: 13.5,
+      inFavorites: false,
     },
   ],
 };
