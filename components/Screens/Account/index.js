@@ -8,6 +8,7 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
+import {logout} from '../../../redux/actions/auth';
 
 import {axiosInstance} from '../../../axios';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -82,7 +83,7 @@ function AccountScreen({navigation}) {
           <TouchableOpacity
             style={styles.touchable1}
             onPress={() => {
-              dispatch({type: 'AUTH_LOGOUT'});
+              dispatch(logout());
             }}>
             <Text style={styles.tx1}>Log out {renderIcon()}</Text>
           </TouchableOpacity>

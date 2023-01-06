@@ -155,7 +155,7 @@ export const Products = {
       photo: arrozIcon,
     },
   ],
-  Favorites: [
+  favorites: [
     {
       id: 9,
       name: 'Hot Dog',

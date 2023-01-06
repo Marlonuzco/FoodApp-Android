@@ -2,9 +2,12 @@ import hotDogIcon from '../../src/images/iconos/hotdog1.png';
 import burguerIcon from '../../src/images/iconos/burguer1.png';
 import pizzaIcon from '../../src/images/iconos/pizza1.png';
 import tacosIcon from '../../src/images/iconos/tacos1.png';
+
 //products
 export const SET_INFAVORITES = 'SET_INFAVORITES';
 export const DELETE_TO_INFAVORITES = 'DELETE_TO_INFAVORITES';
+export const SET_INCART = 'SET_INCART';
+export const SET_INCART_FALSE = 'SET_INCART_FALSE';
 
 const products_initial_state = {
   Favorites: [
@@ -17,6 +20,7 @@ const products_initial_state = {
       counter: 1,
       totalPrice: 8,
       inFavorites: false,
+      inCart: false,
     },
     {
       id: 10,
@@ -27,6 +31,7 @@ const products_initial_state = {
       counter: 1,
       totalPrice: 10,
       inFavorites: false,
+      inCart: false,
     },
     {
       id: 11,
@@ -37,6 +42,7 @@ const products_initial_state = {
       counter: 1,
       totalPrice: 12,
       inFavorites: false,
+      inCart: false,
     },
     {
       id: 12,
@@ -47,6 +53,7 @@ const products_initial_state = {
       counter: 1,
       totalPrice: 13.5,
       inFavorites: false,
+      inCart: false,
     },
   ],
 };
@@ -54,12 +61,36 @@ const products_initial_state = {
 const products = (state = products_initial_state, action) => {
   switch (action.type) {
     case SET_INFAVORITES:
-      let newInFavoritesState = [...state.Favorites][action.index];
-      newInFavoritesState.inFavorites = newInFavoritesState.inFavorites = true;
+      state.Favorites.map(i => {
+        if (action.id === i.id) {
+          let newValue = i;
+          newValue.inFavorites = newValue.inFavorites = true;
+        }
+      });
       return {...state};
     case DELETE_TO_INFAVORITES:
-      let deleteTofavorites = [...state.Favorites][action.index];
-      deleteTofavorites.inFavorites = deleteTofavorites.inFavorites = false;
+      state.Favorites.map(i => {
+        if (action.id === i.id) {
+          let newValue = i;
+          newValue.inFavorites = newValue.inFavorites = false;
+        }
+      });
+      return {...state};
+    case SET_INCART:
+      state.Favorites.map(i => {
+        if (action.id === i.id) {
+          let newValue = i;
+          newValue.inCart = newValue.inCart = true;
+        }
+      });
+      return {...state};
+    case SET_INCART_FALSE:
+      state.Favorites.map(i => {
+        if (action.id === i.id) {
+          let newValue = i;
+          newValue.inCart = newValue.inCart = false;
+        }
+      });
       return {...state};
     default:
       return state;

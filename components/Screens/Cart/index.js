@@ -9,6 +9,7 @@ import {
   removeFromCart,
   incremenTotalCount,
 } from '../../../redux/actions/cart';
+import {setInCartFalse} from '../../../redux/actions/products';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from './styles';
@@ -53,6 +54,7 @@ const RenderItem = ({item, index}) => {
       <TouchableOpacity
         onPress={() => {
           dispatch(removeFromCart(item.id));
+          dispatch(setInCartFalse(item.id));
         }}
         style={styles.iconTrash}>
         {renderTrashIcon()}
@@ -61,7 +63,7 @@ const RenderItem = ({item, index}) => {
   );
 };
 
-function CartScreen({cart, navigation, totalCount}) {
+function CartScreen({cart, navigation}) {
   const CartView = () => {
     if (cart.products < 1) {
       return (
@@ -95,6 +97,15 @@ function CartScreen({cart, navigation, totalCount}) {
       );
     }
   };
+
+  const values = () =>
+    cart.products.map(i => {
+      if (cart.products < 1) {
+        return <Text style={styles.tx7}>$ {0}</Text>;
+      } else {
+        return <Text style={styles.tx7}>$ {i.totalPrice}</Text>;
+      }
+    });
   return (
     <>
       <View style={styles.view1}>
@@ -113,9 +124,7 @@ function CartScreen({cart, navigation, totalCount}) {
         <View style={styles.container5}>
           <Text style={styles.tx5}>Total count : </Text>
         </View>
-        <View style={styles.container6}>
-          <Text style={styles.tx7}>$ {cart.totalCount}</Text>
-        </View>
+        <View style={styles.container6}>{values()}</View>
       </View>
       <TouchableOpacity style={styles.btnPay}>
         <Text style={styles.tx6}>Pay Total</Text>

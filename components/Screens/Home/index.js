@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch, connect} from 'react-redux';
 import {
   View,
@@ -17,6 +17,7 @@ import icon1 from '../../../src/images/iconos/icon2.png';
 import Delivery from '../../../src/images/Delivery.png';
 
 import styles from './styles';
+import {setInCart} from '../../../redux/actions/products';
 
 //categories list component
 const RenderItem = ({navigation, item}) => (
@@ -46,13 +47,26 @@ const RenderItem2 = ({item, navigation, index}) => {
       <View style={styles.itemview2}>
         <Text style={styles.itemTitle2}>{item.name}</Text>
         <Text style={styles.price}>Sales for: {item.price}$</Text>
-        <TouchableOpacity
-          style={styles.addbtn}
-          onPress={() => {
-            dispatch(addToCart(item));
-          }}>
-          <Text style={styles.txAddBtn}>Add to cart {renderIcon2()}</Text>
-        </TouchableOpacity>
+        {item.inCart ? (
+          <TouchableOpacity
+            style={styles.addbtn}
+            onPress={() => {
+              navigation.navigate('Cart');
+            }}>
+            <Text style={styles.txAddBtn}>
+              {item.counter} in {renderIcon2()}
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.addbtn}
+            onPress={() => {
+              dispatch(addToCart(item));
+              dispatch(setInCart(item.id));
+            }}>
+            <Text style={styles.txAddBtn}>Add to cart {renderIcon2()}</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -81,7 +95,7 @@ function HomeSreen({navigation, data, products}) {
           <Image source={Delivery} style={styles.imgDelivey} />
           <View style={styles.container6}>
             <Text style={styles.tx2}>Promotions</Text>
-            <Text style={styles.tx3}>¡Free Deliverys for this month!</Text>
+            <Text style={styles.tx3}>¡Free Deliverys of 01/01 to 01/02!</Text>
           </View>
         </View>
       </View>

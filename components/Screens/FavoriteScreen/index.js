@@ -28,7 +28,7 @@ const RenderItem = ({item, index}) => {
           style={styles.iconTrash}
           onPress={() => {
             dispatch(removeOneToFavorites(item.id));
-            dispatch(deleteTofavorites(index));
+            dispatch(deleteTofavorites(item.id));
           }}>
           {renderTrashIcon()}
         </TouchableOpacity>

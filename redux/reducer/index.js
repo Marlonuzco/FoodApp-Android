@@ -14,7 +14,7 @@ const persistConfig = {
 
 export default combineReducers({
   auth: persistReducer(persistConfig, auth),
-  favorites: persistReducer(persistConfig, favorites),
   products: persistReducer(persistConfig, products),
+  favorites: persistReducer(persistConfig, favorites),
   cart,
 });
