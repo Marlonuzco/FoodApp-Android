@@ -5,7 +5,7 @@ const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
   view1: {
-    height: '75%',
+    height: '65%',
     alignItems: 'center',
   },
   view2: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: '50%',
+    marginTop: '40%',
     color: 'gray',
   },
   btn2: {

@@ -1,6 +1,13 @@
 import React from 'react';
 import {connect, useDispatch} from 'react-redux';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import {
   incrementCount,
   decrementCount,
@@ -28,19 +35,19 @@ const RenderItem = ({item, index}) => {
             <TouchableOpacity
               style={styles.btn1}
               onPress={() => {
-                dispatch(incrementCount(index));
-                dispatch(incremenTotalPrice(index));
+                dispatch(decrementCount(index));
+                dispatch(decrementTotalPrice(index));
               }}>
-              <Text style={styles.tx1}>+</Text>
+              <Text style={styles.tx1}>-</Text>
             </TouchableOpacity>
             <Text style={styles.tx2}>{item.counter}</Text>
             <TouchableOpacity
               style={styles.btn1}
               onPress={() => {
-                dispatch(decrementCount(index));
-                dispatch(decrementTotalPrice(index));
+                dispatch(incrementCount(index));
+                dispatch(incremenTotalPrice(index));
               }}>
-              <Text style={styles.tx1}>-</Text>
+              <Text style={styles.tx1}>+</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -97,39 +104,54 @@ function CartScreen({cart, navigation}) {
       );
     }
   };
-
-  const values = () =>
-    cart.products.map(i => {
-      if (cart.products < 1) {
-        return <Text style={styles.tx7}>$ {0}</Text>;
-      } else {
-        return <Text style={styles.tx7}>$ {i.totalPrice}</Text>;
-      }
-    });
+  const values = cart.products.map(i => i.totalPrice);
+  const initialValues = 0;
+  const sumWithInitial = values.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValues,
+  );
+  const Delivery = 5;
+  const TotalToPay = () => {
+    if (sumWithInitial < 1) {
+      return initialValues;
+    } else {
+      return sumWithInitial + Delivery;
+    }
+  };
   return (
-    <>
+    <View>
       <View style={styles.view1}>
         <Text style={styles.title}>My cart</Text>
         {CartView()}
       </View>
       <View style={styles.container4}>
         <View style={styles.container5}>
-          <Text style={styles.tx5}>Delivery Services : </Text>
+          <Text style={styles.tx5}>Total items : </Text>
         </View>
         <View style={styles.container6}>
-          <Text style={styles.tx7}>$ {0}</Text>
+          <Text style={styles.tx7}>$ {sumWithInitial}</Text>
         </View>
       </View>
       <View style={styles.container4}>
         <View style={styles.container5}>
-          <Text style={styles.tx5}>Total count : </Text>
+          <Text style={styles.tx5}>Delivery Services : </Text>
         </View>
-        <View style={styles.container6}>{values()}</View>
+        <View style={styles.container6}>
+          <Text style={styles.tx7}>$ {Delivery}</Text>
+        </View>
+      </View>
+      <View style={styles.container4}>
+        <View style={styles.container5}>
+          <Text style={styles.tx5}>Total to pay : </Text>
+        </View>
+        <View style={styles.container6}>
+          <Text style={styles.tx7}>$ {TotalToPay()}</Text>
+        </View>
       </View>
       <TouchableOpacity style={styles.btnPay}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 }
 
