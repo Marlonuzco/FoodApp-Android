@@ -1,20 +1,12 @@
 import React from 'react';
 import {connect, useDispatch} from 'react-redux';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  ScrollView,
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 import {
   incrementCount,
   decrementCount,
   incremenTotalPrice,
   decrementTotalPrice,
   removeFromCart,
-  incremenTotalCount,
 } from '../../../redux/actions/cart';
 import {setInCartFalse} from '../../../redux/actions/products';
 import Icon from 'react-native-vector-icons/FontAwesome5';

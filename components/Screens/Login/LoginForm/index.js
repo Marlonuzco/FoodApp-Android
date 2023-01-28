@@ -13,7 +13,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
 
 import img1 from './../../../../src/images/fondo2.jpeg';
-import {users} from '../../../../utils/getUser';
 import styles from './styles';
 
 function LoginForm({login, auth, navigation}) {
