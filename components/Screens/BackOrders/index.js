@@ -1,16 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Text, FlatList, View} from 'react-native';
+import {Text, FlatList, View, Image, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import orderIcon from '../../../src/images/iconos/orderIcon.png';
 import styles from './styles';
 
-const RenderItem = ({item, index}) => {
-  console.log('Ordersitem', item);
+const RenderItem = ({item, index, navigation}) => {
   return (
-    <View style={styles.renderItem}>
-      <Text style={styles.itemName}>{item.name}</Text>
-      <Text>{item.counter}</Text>
-    </View>
+    <TouchableOpacity
+      style={styles.renderItem}
+      onPress={() => {
+        navigation.navigate('OrderScreen', item);
+      }}>
+      <View style={styles.container2}>
+        <Text style={styles.itemName}>Order {index + 1}</Text>
+      </View>
+      <View style={styles.container2}>
+        <Image source={orderIcon} style={styles.photo} />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -40,3 +49,10 @@ function OrdersScreen({backOrders, navigation}) {
 export default connect(store => ({
   backOrders: store.backOrders,
 }))(OrdersScreen);
+
+function renderIconOrder() {
+  return <Icon name="clipboard-list" size={30} />;
+}
+function renderIconClock() {
+  return <Icon name="clock" size={30} />;
+}

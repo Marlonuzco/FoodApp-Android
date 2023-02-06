@@ -7,7 +7,7 @@ export const INCREMENT_COUNT = 'INCREMENT_COUNT';
 export const DECREMENT_COUNT = 'DECREMENT_COUNT';
 export const INCREMENT_TOTAL_PRICE = 'INCREMENT_TOTAL_PRICE';
 export const DECREMENT_TOTAL_PRICE = 'DECREMENT_TOTAL_PRICE';
-export const INCREMENT_TOTAL_COUNT = 'INCREMENT_TOTAL_COUNT';
+export const RETURN_INITIAL_STATE = 'RETURN_INITIAL_STATE';
 
 const cart_initial_state = {
   products: [],
@@ -39,7 +39,7 @@ const cart = (state = cart_initial_state, action) => {
       let totalPrice2 = [...state.products][action.index];
       totalPrice2.totalPrice = totalPrice2.totalPrice - totalPrice2.price;
       return {...state};
-    case INCREMENT_TOTAL_COUNT:
+    case RETURN_INITIAL_STATE:
       return {...state};
     default:
       return state;

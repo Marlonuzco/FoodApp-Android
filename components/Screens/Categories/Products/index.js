@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from './styles';
 
-function Products({navigation, route, favorites}) {
+function Products({navigation, route}) {
   const [inFavorites, setInFavorites] = useState(route.params.inFavorites);
   const [inCart2, setInCart2] = useState(route.params.inCart);
   const dispatch = useDispatch();

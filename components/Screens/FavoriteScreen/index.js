@@ -7,7 +7,7 @@ import {deleteTofavorites} from '../../../redux/actions/products';
 import {renderTrashIcon} from '../Cart/index';
 import styles from './styles';
 
-const RenderItem = ({item, index}) => {
+const RenderItem = ({item}) => {
   const dispatch = useDispatch();
   return (
     <>

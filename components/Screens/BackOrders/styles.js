@@ -11,13 +11,25 @@ const styles = StyleSheet.create({
     margin: 10,
     color: bgColor5,
   },
+  container1: {
+    height: '75%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   renderItem: {
-    height: '50%',
-    width: '90%',
-    backgroundColor: 'black',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: bgColor5,
+    marginBottom: 20,
+    height: 110,
+    borderRadius: 20,
+    margin: '5%',
   },
   itemName: {
-    color: 'black',
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   title2: {
     fontSize: 30,
@@ -25,6 +37,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: '50%',
     color: 'gray',
+  },
+  photo: {
+    height: '90%',
+    width: '90%',
+  },
+  container2: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

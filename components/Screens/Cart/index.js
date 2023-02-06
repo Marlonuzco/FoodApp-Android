@@ -8,6 +8,7 @@ import {
   incremenTotalPrice,
   decrementTotalPrice,
   removeFromCart,
+  returnInitialState,
 } from '../../../redux/actions/cart';
 import {addOrder} from '../../../redux/actions/backOrders';
 
@@ -15,7 +16,6 @@ import {setInCartFalse} from '../../../redux/actions/products';
 import styles from './styles';
 
 const RenderItem = ({item, index, dispatch}) => {
-  console.log('cartItem', item);
   return (
     <View style={styles.container1}>
       <View style={styles.renderItem}>
@@ -89,12 +89,14 @@ const NoItemsInCart = ({navigation}) => {
 
 function CartScreen({cart, navigation}) {
   const dispatch = useDispatch();
+
   const values = cart.products.map(i => i.totalPrice);
   const initialValues = 0;
   const sumWithInitial = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     initialValues,
   );
+
   const Delivery = 5;
   const TotalToPay = () => {
     if (sumWithInitial < 1) {
@@ -103,6 +105,7 @@ function CartScreen({cart, navigation}) {
       return sumWithInitial + Delivery;
     }
   };
+
   return (
     <View>
       <View style={styles.view1}>
@@ -150,6 +153,7 @@ function CartScreen({cart, navigation}) {
         style={styles.btnPay}
         onPress={() => {
           dispatch(addOrder(cart.products));
+          dispatch(returnInitialState());
         }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>

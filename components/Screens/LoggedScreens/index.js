@@ -5,6 +5,7 @@ import CategoriesScreen from '../Categories/index';
 import Navigation from '../../Navigation';
 import Products from '../Categories/Products/index';
 import ProductsCategories from '../Categories/ProductsCategories';
+import OrderScreen from '../BackOrders/orderScreen/orderScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,11 @@ function LoggedScreens({navigation}) {
         <Stack.Screen
           name="ProductsCategories"
           component={ProductsCategories}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OrderScreen"
+          component={OrderScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
