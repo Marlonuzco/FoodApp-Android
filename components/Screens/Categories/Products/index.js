@@ -52,7 +52,6 @@ function Products({navigation, route, favorites}) {
                 setInFavorites(!inFavorites);
               }}>
               {renderIcon3(inFavorites)}
-              <Text>ADD</Text>
             </TouchableOpacity>
           </>
         )}

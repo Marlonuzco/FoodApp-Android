@@ -11,7 +11,6 @@ export const INCREMENT_TOTAL_COUNT = 'INCREMENT_TOTAL_COUNT';
 
 const cart_initial_state = {
   products: [],
-  totalCount: [0],
 };
 
 const cart = (state = cart_initial_state, action) => {

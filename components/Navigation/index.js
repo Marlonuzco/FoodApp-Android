@@ -6,8 +6,7 @@ import HomeSreen from '../Screens/Home/index';
 import FavoritesSreen from '../Screens/FavoriteScreen/index';
 import AccountSreen from '../Screens/Account/index';
 import CartScreen from '../Screens/Cart/index';
-
-import styles from './styles';
+import OrdersScreen from '../Screens/BackOrders/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +15,6 @@ function Navigation() {
     <>
       <Tab.Navigator
         screenOptions={{
-          /* tabBarStyle: styles.tabbar, */
           tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
           tabBarInactiveTintColor: 'black',
@@ -38,8 +36,18 @@ function Navigation() {
           component={CartScreen}
           options={{
             tabBarLabel: 'Cart',
-            tabBarIcon: ({size, color, focused}) => (
+            tabBarIcon: ({size, color}) => (
               <Icon name="shopping-cart" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Orders"
+          component={OrdersScreen}
+          options={{
+            tabBarLabel: 'Orders',
+            tabBarIcon: ({size, color}) => (
+              <Icon name="clipboard-list" size={size} color={color} />
             ),
           }}
         />

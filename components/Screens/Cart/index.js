@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect, useDispatch} from 'react-redux';
 import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   incrementCount,
   decrementCount,
@@ -8,13 +9,13 @@ import {
   decrementTotalPrice,
   removeFromCart,
 } from '../../../redux/actions/cart';
-import {setInCartFalse} from '../../../redux/actions/products';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import {addOrder} from '../../../redux/actions/backOrders';
 
+import {setInCartFalse} from '../../../redux/actions/products';
 import styles from './styles';
 
-const RenderItem = ({item, index}) => {
-  const dispatch = useDispatch();
+const RenderItem = ({item, index, dispatch}) => {
+  console.log('cartItem', item);
   return (
     <View style={styles.container1}>
       <View style={styles.renderItem}>
@@ -27,8 +28,17 @@ const RenderItem = ({item, index}) => {
             <TouchableOpacity
               style={styles.btn1}
               onPress={() => {
-                dispatch(decrementCount(index));
-                dispatch(decrementTotalPrice(index));
+                if (item.counter === 1) {
+                  return (
+                    dispatch(removeFromCart(item.id)),
+                    dispatch(setInCartFalse(item.id))
+                  );
+                } else {
+                  return (
+                    dispatch(decrementCount(index)),
+                    dispatch(decrementTotalPrice(index))
+                  );
+                }
               }}>
               <Text style={styles.tx1}>-</Text>
             </TouchableOpacity>
@@ -62,40 +72,23 @@ const RenderItem = ({item, index}) => {
   );
 };
 
+const NoItemsInCart = ({navigation}) => {
+  return (
+    <>
+      <Text style={styles.title3}>No Items</Text>
+      <TouchableOpacity
+        style={styles.btn2}
+        onPress={() => {
+          navigation.navigate('Categories');
+        }}>
+        <Text style={styles.tx9}>! Click here to order now ¡</Text>
+      </TouchableOpacity>
+    </>
+  );
+};
+
 function CartScreen({cart, navigation}) {
-  const CartView = () => {
-    if (cart.products < 1) {
-      return (
-        <>
-          <Text style={styles.title3}>No Items</Text>
-          <TouchableOpacity
-            style={styles.btn2}
-            onPress={() => {
-              navigation.navigate('Categories');
-            }}>
-            <Text style={styles.tx9}>! Click here to order now ¡</Text>
-          </TouchableOpacity>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <FlatList
-            data={cart.products}
-            keyExtractor={item => item.id}
-            renderItem={item => (
-              <RenderItem
-                navigation={navigation}
-                item={item.item}
-                index={item.index}
-              />
-            )}
-            showsVerticalScrollIndicator={false}
-          />
-        </>
-      );
-    }
-  };
+  const dispatch = useDispatch();
   const values = cart.products.map(i => i.totalPrice);
   const initialValues = 0;
   const sumWithInitial = values.reduce(
@@ -114,7 +107,20 @@ function CartScreen({cart, navigation}) {
     <View>
       <View style={styles.view1}>
         <Text style={styles.title}>My cart</Text>
-        {CartView()}
+        <FlatList
+          ListEmptyComponent={<NoItemsInCart navigation={navigation} />}
+          data={cart.products}
+          keyExtractor={item => item.id}
+          renderItem={item => (
+            <RenderItem
+              navigation={navigation}
+              item={item.item}
+              index={item.index}
+              dispatch={dispatch}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
       <View style={styles.container4}>
         <View style={styles.container5}>
@@ -140,7 +146,11 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx7}>$ {TotalToPay()}</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.btnPay}>
+      <TouchableOpacity
+        style={styles.btnPay}
+        onPress={() => {
+          dispatch(addOrder(cart.products));
+        }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>
     </View>

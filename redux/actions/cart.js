@@ -6,6 +6,7 @@ import {
   DECREMENT_TOTAL_PRICE,
   INCREMENT_TOTAL_PRICE,
   INCREMENT_TOTAL_COUNT,
+  SEND_ORDERS,
 } from '../reducer/cart';
 
 export const addToCart = (item, params, index) => {
@@ -47,4 +48,9 @@ export const decrementTotalPrice = index => ({
 export const incremenTotalCount = price => ({
   type: INCREMENT_TOTAL_COUNT,
   price,
+});
+
+export const sendOrders = products => ({
+  type: SEND_ORDERS,
+  products,
 });

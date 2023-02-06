@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {addToCart} from '../../../redux/actions/cart';
+import {setInCart} from '../../../redux/actions/products';
 
 import {Products} from '../../../utils/getUser';
 import icon1 from '../../../src/images/iconos/icon2.png';
 import Delivery from '../../../src/images/Delivery.png';
 
 import styles from './styles';
-import {setInCart} from '../../../redux/actions/products';
 
 //categories list component
 const RenderItem = ({navigation, item}) => (

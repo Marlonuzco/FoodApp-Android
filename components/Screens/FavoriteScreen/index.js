@@ -37,39 +37,27 @@ const RenderItem = ({item, index}) => {
   );
 };
 
+const NoItemsInFavorites = () => {
+  return <Text style={styles.title3}>No Items in Favorites</Text>;
+};
+
 function FavoriteScreen({navigation, favorites}) {
-  const FavoriteView = () => {
-    if (favorites.items < 1) {
-      return (
-        <>
-          <Text style={styles.title3}>No Items in Favorites</Text>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <FlatList
-            data={favorites.items}
-            keyExtractor={item => item.id}
-            renderItem={item => (
-              <RenderItem
-                navigation={navigation}
-                item={item.item}
-                index={item.index}
-              />
-            )}
-            showsVerticalScrollIndicator={false}
-          />
-        </>
-      );
-    }
-  };
   return (
     <>
-      <View>
-        <Text style={styles.title}>Favorites</Text>
-        {FavoriteView()}
-      </View>
+      <Text style={styles.title}>Favorites</Text>
+      <FlatList
+        ListEmptyComponent={<NoItemsInFavorites />}
+        data={favorites.items}
+        keyExtractor={item => item.id}
+        renderItem={item => (
+          <RenderItem
+            navigation={navigation}
+            item={item.item}
+            index={item.index}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
     </>
   );
 }
