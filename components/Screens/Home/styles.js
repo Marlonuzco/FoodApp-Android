@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     display: 'flex',
-    backgroundColor: bgColor3,
+    backgroundColor: bgColor5,
   },
   imgDelivey: {
     height: 90,
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   tx2: {
-    color: bgColor5,
+    color: bgColor3,
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   addbtn: {
-    backgroundColor: bgColor3,
+    backgroundColor: bgColor5,
     borderRadius: 20,
     height: 25,
     width: 85,

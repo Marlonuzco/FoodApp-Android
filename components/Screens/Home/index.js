@@ -75,7 +75,6 @@ const RenderItem2 = ({item, navigation}) => {
 };
 
 function HomeSreen({navigation, data, products}) {
-  console.log('products', products.Favorites);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
