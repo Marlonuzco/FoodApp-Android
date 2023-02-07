@@ -1,9 +1,14 @@
 import {StyleSheet} from 'react-native';
 
+const bgColor1 = '#000000c0';
 const bgColor3 = '#FFA200';
 const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
   view1: {
     height: '65%',
     alignItems: 'center',
@@ -19,7 +24,7 @@ const styles = StyleSheet.create({
   container1: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: bgColor3,
+    backgroundColor: bgColor1,
     marginBottom: 20,
     height: 110,
     borderRadius: 20,
@@ -30,14 +35,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     margin: 10,
-    color: bgColor5,
+    color: bgColor3,
   },
   renderItem: {
     height: 110,
     width: '85%',
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
-    backgroundColor: bgColor5,
     flexDirection: 'row',
   },
   photo: {
@@ -91,14 +95,17 @@ const styles = StyleSheet.create({
   iconTrash: {
     margin: 10,
   },
+  renderIconTrash: {
+    color: bgColor3,
+  },
   container4: {
     height: 50,
     flexDirection: 'row',
   },
   btnPay: {
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor3,
     height: 35,
-    margin: 20,
+    width: 150,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
   tx5: {
     fontSize: 22,
     margin: 5,
-    color: 'gray',
+    color: 'white',
   },
   tx7: {
     color: bgColor3,
@@ -135,7 +142,7 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   btn2: {
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor1,
     borderRadius: 20,
     height: 60,
     width: 200,

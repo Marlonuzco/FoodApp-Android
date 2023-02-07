@@ -1,14 +1,13 @@
 import {StyleSheet} from 'react-native';
 
-const bgColor2 = 'rgba(0, 0, 0, 0.8)';
 const bgColor1 = '#000000c0';
 const bgColor3 = '#FFA200';
 const bgColor4 = '#EEEEEE';
 const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
-  scrollview: {
-    backgroundColor: 'white',
+  background: {
+    flex: 1,
   },
   input: {
     backgroundColor: bgColor4,
@@ -26,14 +25,14 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontSize: 30,
     fontWeight: 'bold',
-    color: bgColor5,
+    color: bgColor3,
   },
   title2: {
     fontSize: 20,
     margin: 5,
     marginLeft: 13,
     fontWeight: 'bold',
-    color: bgColor2,
+    color: bgColor3,
     textAlign: 'left',
     marginRight: 25,
   },
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemContainer: {
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor1,
     justifyContent: 'center',
     alignItems: 'center',
     height: 90,
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 20,
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: bgColor1,
     alignItems: 'center',
   },
   touchable1: {
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginBottom: 5,
     textAlign: 'center',
-    color: 'black',
+    color: 'white',
   },
   itemview2: {
     borderRadius: 20,
@@ -136,10 +135,8 @@ const styles = StyleSheet.create({
   },
   container4: {
     alignItems: 'center',
-    backgroundColor: bgColor5,
   },
   container5: {
-    backgroundColor: bgColor5,
     height: 100,
     width: '100%',
     borderRadius: 20,
@@ -149,10 +146,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     display: 'flex',
+    backgroundColor: bgColor3,
   },
   imgDelivey: {
-    height: 100,
-    width: 140,
+    height: 90,
+    width: 130,
     margin: 10,
   },
   container6: {
@@ -160,17 +158,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   tx2: {
-    color: 'black',
+    color: bgColor5,
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  description: {
-    fontSize: 13,
-    color: 'white',
-    margin: 3,
-  },
-  description2: {
-    fontSize: 13,
   },
   price: {
     color: bgColor3,
@@ -180,10 +170,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   addbtn: {
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor3,
     borderRadius: 20,
     height: 25,
-    width: 90,
+    width: 85,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
@@ -195,14 +185,7 @@ const styles = StyleSheet.create({
   },
   tx3: {
     color: 'white',
-  },
-  container7: {
-    backgroundColor: bgColor5,
-    height: 35,
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    fontSize: 13,
   },
   tx4: {
     color: 'white',

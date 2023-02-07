@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {addToCart} from '../../../redux/actions/cart';
@@ -15,6 +16,7 @@ import {setInCart} from '../../../redux/actions/products';
 
 import {Products} from '../../../utils/getUser';
 import icon1 from '../../../src/images/iconos/icon2.png';
+import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import Delivery from '../../../src/images/Delivery.png';
 
 import styles from './styles';
@@ -34,7 +36,7 @@ const RenderItem = ({navigation, item}) => (
 );
 
 //popular list component
-const RenderItem2 = ({item, navigation, index}) => {
+const RenderItem2 = ({item, navigation}) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.itemContainer2}>
@@ -73,75 +75,72 @@ const RenderItem2 = ({item, navigation, index}) => {
 };
 
 function HomeSreen({navigation, data, products}) {
+  console.log('products', products.Favorites);
   return (
-    <ScrollView style={styles.scrollview}>
-      <View style={styles.container1}>
-        <View style={styles.container2}>
-          <Text style={styles.title}>Menú</Text>
-          <TouchableOpacity style={styles.touchable2}>
-            <Image style={styles.img2} source={icon1} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container3}>
-          <TextInput
-            style={styles.input}
-            placeholder={'Search'}
-            autoCapitalize="none"
-            placeholderTextColor={'black'}
-          />
-          <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
-        </View>
-        <View style={styles.container5}>
-          <Image source={Delivery} style={styles.imgDelivey} />
-          <View style={styles.container6}>
-            <Text style={styles.tx2}>Promotions</Text>
-            <Text style={styles.tx3}>¡Free Deliverys of 01/01 to 01/02!</Text>
+    <ImageBackground style={styles.background} source={ImgBg1}>
+      <ScrollView>
+        <View style={styles.container1}>
+          <View style={styles.container2}>
+            <Text style={styles.title}>Menú</Text>
+            <TouchableOpacity style={styles.touchable2}>
+              <Image style={styles.img2} source={icon1} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.container3}>
+            <TextInput
+              style={styles.input}
+              placeholder={'Search'}
+              autoCapitalize="none"
+              placeholderTextColor={'black'}
+            />
+            <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
+          </View>
+          <View style={styles.container5}>
+            <Image source={Delivery} style={styles.imgDelivey} />
+            <View style={styles.container6}>
+              <Text style={styles.tx2}>Promotions</Text>
+              <Text style={styles.tx3}>¡Free Deliverys of 01/01 to 01/02!</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Categories');
-          }}>
-          <Text style={styles.title2}>Categories</Text>
-        </TouchableOpacity>
-        <FlatList
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          data={Products.categories}
-          keyExtractor={item => item.id}
-          renderItem={item => (
-            <RenderItem navigation={navigation} item={item.item} />
-          )}
-        />
-      </View>
-      <Text style={styles.title2}>Popular</Text>
-      <View style={styles.container4}>
-        {/* popular list */}
-        <FlatList
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          data={products.Favorites}
-          keyExtractor={item => item.id}
-          renderItem={item => (
-            <RenderItem2
-              navigation={navigation}
-              item={item.item}
-              data={data}
-              index={item.index}
-            />
-          )}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
-      <View style={styles.container7}>
-        <Text style={styles.tx4}>! Order now !</Text>
-        <Text style={styles.tx4}>! Order now !</Text>
-        <Text style={styles.tx4}>! Order now !</Text>
-        <Text style={styles.tx4}>! Order now !</Text>
-      </View>
-    </ScrollView>
+        <View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Categories');
+            }}>
+            <Text style={styles.title2}>Categories</Text>
+          </TouchableOpacity>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={Products.categories}
+            keyExtractor={item => item.id}
+            renderItem={item => (
+              <RenderItem navigation={navigation} item={item.item} />
+            )}
+          />
+        </View>
+        <Text style={styles.title2}>Popular</Text>
+        <View style={styles.container4}>
+          {/* popular list */}
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={products.Favorites}
+            keyExtractor={item => item.id}
+            renderItem={item => (
+              <RenderItem2
+                navigation={navigation}
+                item={item.item}
+                data={data}
+                index={item.index}
+              />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 export default connect(store => ({

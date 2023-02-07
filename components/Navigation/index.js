@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -10,70 +11,91 @@ import OrdersScreen from '../Screens/BackOrders/index';
 
 const Tab = createBottomTabNavigator();
 
-function Navigation() {
+const bgColor1 = '#000000c0';
+const bgColor3 = '#FFA200';
+const bgColor5 = '#BF1A1A';
+
+function Navigation({cart, backOrders}) {
   return (
-    <>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarShowLabel: false,
-          tabBarHideOnKeyboard: true,
-          tabBarInactiveTintColor: 'black',
-          headerShown: false,
-          tabBarActiveTintColor: '#BF1A1A',
-        }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeSreen}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="home" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Cart"
-          component={CartScreen}
-          options={{
-            tabBarLabel: 'Cart',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="shopping-cart" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Orders"
-          component={OrdersScreen}
-          options={{
-            tabBarLabel: 'Orders',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="clipboard-list" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Favorites"
-          component={FavoritesSreen}
-          options={{
-            tabBarLabel: 'Favorites',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="heart" size={size} color={color} solid={true} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Account"
-          component={AccountSreen}
-          options={{
-            tabBarLabel: 'Account',
-            tabBarIcon: ({size, color}) => (
-              <Icon name="user-alt" size={size} color={color} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: bgColor1,
+          borderRadius: 20,
+          position: 'absolute',
+          margin: 10,
+        },
+        tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
+        tabBarInactiveTintColor: 'white',
+        headerShown: false,
+        tabBarActiveTintColor: bgColor3,
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeSreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({size, color}) => (
+            <Icon name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarBadge: cart.totalItems,
+          tabBarBadgeStyle: {
+            backgroundColor: bgColor5,
+            color: 'white',
+          },
+          tabBarLabel: 'Cart',
+          tabBarIcon: ({size, color}) => (
+            <Icon name="shopping-cart" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Orders"
+        component={OrdersScreen}
+        options={{
+          tabBarBadge: backOrders.TotalOrders,
+          tabBarBadgeStyle: {
+            backgroundColor: bgColor5,
+            color: 'white',
+          },
+          tabBarLabel: 'Orders',
+          tabBarIcon: ({size, color}) => (
+            <Icon name="clipboard-list" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesSreen}
+        options={{
+          tabBarLabel: 'Favorites',
+          tabBarIcon: ({size, color}) => (
+            <Icon name="heart" size={size} color={color} solid={true} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AccountSreen}
+        options={{
+          tabBarLabel: 'Account',
+          tabBarIcon: ({size, color}) => (
+            <Icon name="user-alt" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
-export default Navigation;
+export default connect(store => ({
+  cart: store.cart,
+  backOrders: store.backOrders,
+}))(Navigation);

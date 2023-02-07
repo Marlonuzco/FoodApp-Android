@@ -11,6 +11,7 @@ export const RETURN_INITIAL_STATE = 'RETURN_INITIAL_STATE';
 
 const cart_initial_state = {
   products: [],
+  totalItems: 0,
 };
 
 const cart = (state = cart_initial_state, action) => {

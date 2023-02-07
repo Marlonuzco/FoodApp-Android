@@ -1,6 +1,13 @@
 import React from 'react';
 import {connect, useDispatch} from 'react-redux';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   incrementCount,
@@ -12,6 +19,7 @@ import {
 } from '../../../redux/actions/cart';
 import {addOrder} from '../../../redux/actions/backOrders';
 
+import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import {setInCartFalse} from '../../../redux/actions/products';
 import styles from './styles';
 
@@ -107,7 +115,7 @@ function CartScreen({cart, navigation}) {
   };
 
   return (
-    <View>
+    <ImageBackground style={styles.background} source={ImgBg1}>
       <View style={styles.view1}>
         <Text style={styles.title}>My cart</Text>
         <FlatList
@@ -157,7 +165,7 @@ function CartScreen({cart, navigation}) {
         }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -166,5 +174,5 @@ export default connect(store => ({
 }))(CartScreen);
 
 export function renderTrashIcon() {
-  return <Icon name={'trash'} size={30} color={'black'} />;
+  return <Icon name={'trash'} size={30} style={styles.renderIconTrash} />;
 }

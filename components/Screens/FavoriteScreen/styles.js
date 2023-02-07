@@ -1,13 +1,16 @@
 import {StyleSheet} from 'react-native';
 
+const bgColor1 = '#000000c0';
 const bgColor3 = '#FFA200';
-const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
   container1: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: bgColor3,
+    backgroundColor: bgColor1,
     marginBottom: 20,
     height: 110,
     borderRadius: 20,
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
     width: '85%',
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
-    backgroundColor: bgColor5,
     flexDirection: 'row',
   },
   title: {
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     margin: 10,
-    color: bgColor5,
+    color: bgColor3,
   },
   tx2: {
     color: bgColor3,

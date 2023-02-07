@@ -1,8 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Text, FlatList, View, Image, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  FlatList,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import orderIcon from '../../../src/images/iconos/orderIcon.png';
 import styles from './styles';
 
@@ -29,7 +37,7 @@ const NoOrders = () => {
 
 function OrdersScreen({backOrders, navigation}) {
   return (
-    <>
+    <ImageBackground style={styles.background} source={ImgBg1}>
       <Text style={styles.title}>Orders</Text>
       <FlatList
         ListEmptyComponent={<NoOrders />}
@@ -43,7 +51,7 @@ function OrdersScreen({backOrders, navigation}) {
           />
         )}
       />
-    </>
+    </ImageBackground>
   );
 }
 export default connect(store => ({

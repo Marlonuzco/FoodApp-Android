@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 
+const bgColor1 = '#000000c0';
 const bgColor3 = '#FFA200';
 const bgColor5 = '#BF1A1A';
 
@@ -8,14 +9,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   photo: {
-    height: '65%',
+    height: '75%',
     width: '100%',
   },
   container1: {
     borderRadius: 20,
     width: '90%',
     height: 120,
-    backgroundColor: bgColor5,
+    backgroundColor: bgColor1,
     margin: '5%',
     justifyContent: 'center',
     alignItems: 'center',
