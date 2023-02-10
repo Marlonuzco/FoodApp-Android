@@ -1,6 +1,6 @@
 import UserIMG from '../src/images/UserImg.png';
 
-import pizzaIcon from '../src/images/iconos/pizza1.png';
+import pizzaIcon from '../src/images/iconos/pizza1.1.png';
 import burguerIcon from '../src/images/iconos/burguer1.png';
 import tacosIcon from '../src/images/iconos/tacos1.png';
 import pastaIcon from '../src/images/iconos/pasta1.png';

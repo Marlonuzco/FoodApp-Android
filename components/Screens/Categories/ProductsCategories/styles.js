@@ -11,24 +11,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
-    backgroundColor: 'white',
+    backgroundColor: 'gray',
+    height: '100%',
+    width: '100%',
   },
   title1: {
-    color: 'black',
-    fontSize: 20,
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold',
     margin: 5,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   itemContainer: {
     flexDirection: 'row',
     margin: 15,
     backgroundColor: bgColor1,
-    height: 80,
-    width: 320,
+    height: 90,
+    width: 340,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
   },
   container2: {
     margin: 10,
@@ -38,13 +40,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imgItem: {
-    height: 70,
-    width: 120,
+    height: '80%',
+    width: '50%',
   },
   itemTitle: {
     color: 'white',
     fontSize: 25,
-    margin: 15,
+    textAlign: 'center',
   },
   input: {
     backgroundColor: bgColor4,
@@ -57,6 +59,12 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 40,
     color: 'white',
+  },
+  container3: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -15,21 +15,25 @@ import {
   incremenTotalPrice,
   decrementTotalPrice,
   removeFromCart,
-  returnInitialState,
+  decrementTotalItems,
 } from '../../../redux/actions/cart';
-import {addOrder} from '../../../redux/actions/backOrders';
+import {addOrder, incremenTotalOrders} from '../../../redux/actions/backOrders';
 
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import {setInCartFalse} from '../../../redux/actions/products';
 import styles from './styles';
 
-const RenderItem = ({item, index, dispatch}) => {
+const RenderItem = ({item, index, dispatch, navigation}) => {
   return (
     <View style={styles.container1}>
       <View style={styles.renderItem}>
-        <View style={styles.container2}>
+        <TouchableOpacity
+          style={styles.container2}
+          onPress={() => {
+            navigation.navigate('Products', item);
+          }}>
           <Image style={styles.photo} source={item.photo} />
-        </View>
+        </TouchableOpacity>
         <View style={styles.container2}>
           <Text style={styles.title2}>{item.name}</Text>
           <View style={styles.container3}>
@@ -72,6 +76,7 @@ const RenderItem = ({item, index, dispatch}) => {
         onPress={() => {
           dispatch(removeFromCart(item.id));
           dispatch(setInCartFalse(item.id));
+          dispatch(decrementTotalItems());
         }}
         style={styles.iconTrash}>
         {renderTrashIcon()}
@@ -161,7 +166,7 @@ function CartScreen({cart, navigation}) {
         style={styles.btnPay}
         onPress={() => {
           dispatch(addOrder(cart.products));
-          dispatch(returnInitialState());
+          dispatch(incremenTotalOrders());
         }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>

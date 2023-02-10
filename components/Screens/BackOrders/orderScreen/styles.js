@@ -27,14 +27,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   scrollview: {
-    height: '68%',
+    height: '67%',
     width: '100%',
+    marginBottom: 7,
   },
   title: {
     color: bgColor3,
     fontSize: 25,
     fontWeight: 'bold',
-    marginTop: 10,
+    textAlign: 'center',
+    marginLeft: 100,
+    marginRight: 100,
   },
   container2: {
     flex: 1,
@@ -72,6 +75,54 @@ const styles = StyleSheet.create({
   tx5: {
     color: 'white',
     fontSize: 20,
+  },
+  container4: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+  },
+  btn: {
+    backgroundColor: bgColor5,
+    height: 50,
+    width: 50,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  trashIcon: {
+    color: bgColor3,
+  },
+  container5: {
+    height: 50,
+    flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  container6: {
+    width: '55%',
+  },
+  tx6: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  tx7: {
+    color: bgColor3,
+    fontSize: 25,
+    textAlign: 'right',
+    marginRight: 7,
+    fontWeight: 'bold',
+  },
+  container7: {
+    width: '45%',
+    justifyContent: 'center',
+  },
+  tx8: {
+    fontSize: 22,
+    margin: 5,
+    color: 'white',
   },
 });
 

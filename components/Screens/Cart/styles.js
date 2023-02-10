@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   photo: {
-    height: '65%',
+    height: '70%',
     width: '100%',
   },
   container2: {
@@ -101,6 +101,8 @@ const styles = StyleSheet.create({
   container4: {
     height: 50,
     flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
   },
   btnPay: {
     backgroundColor: bgColor3,

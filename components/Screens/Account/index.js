@@ -24,7 +24,7 @@ function AccountScreen({navigation}) {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await axiosInstance.get('/user');
+        const response = await axiosInstance.get('/users');
         setUserData(response.data);
       } catch (error) {
         setFail(true);

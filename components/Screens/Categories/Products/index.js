@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {useDispatch, connect} from 'react-redux';
-import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
-import {addToCart} from '../../../../redux/actions/cart';
+import {
+  ScrollView,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import {
   addToFavorites,
   removeOneToFavorites,
@@ -11,6 +17,7 @@ import {
   deleteTofavorites,
   setInCart,
 } from '../../../../redux/actions/products';
+import {addToCart, incrementTotalItems} from '../../../../redux/actions/cart';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from './styles';
@@ -20,7 +27,7 @@ function Products({navigation, route}) {
   const [inCart2, setInCart2] = useState(route.params.inCart);
   const dispatch = useDispatch();
   return (
-    <ScrollView style={styles.container1}>
+    <ScrollView style={styles.background}>
       <View style={styles.container3}>
         <TouchableOpacity
           style={styles.btn2}
@@ -29,6 +36,7 @@ function Products({navigation, route}) {
           }}>
           <Text style={styles.tx4}>{renderIcon()}</Text>
         </TouchableOpacity>
+        <Text style={styles.title}>{route.params.name}</Text>
         {inFavorites ? (
           <>
             <TouchableOpacity
@@ -39,7 +47,6 @@ function Products({navigation, route}) {
                 setInFavorites(!inFavorites);
               }}>
               {renderIcon3(inFavorites)}
-              <Text>REMOVE</Text>
             </TouchableOpacity>
           </>
         ) : (
@@ -58,7 +65,6 @@ function Products({navigation, route}) {
       </View>
 
       <View style={styles.container2}>
-        <Text style={styles.title}>{route.params.name}</Text>
         <Image source={route.params.photo} style={styles.img} />
         <Text style={styles.tx2}>Description</Text>
         <Text style={styles.tx2}>{route.params.description}</Text>
@@ -80,6 +86,7 @@ function Products({navigation, route}) {
             onPress={() => {
               dispatch(addToCart(route.params));
               dispatch(setInCart(route.params.id));
+              dispatch(incrementTotalItems());
               setInCart2(!inCart2);
             }}>
             <Text style={styles.txBtn}>Add to cart {renderIcon2()}</Text>
@@ -90,7 +97,7 @@ function Products({navigation, route}) {
   );
 }
 
-function renderIcon() {
+export function renderIcon() {
   return <Icon name="arrow-left" size={30} style={styles.icon} />;
 }
 function renderIcon2() {

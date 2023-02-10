@@ -7,24 +7,26 @@ const bgColor4 = '#EEEEEE';
 const bgColor5 = '#BF1A1A';
 
 const styles = StyleSheet.create({
-  container1: {
+  background: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: bgColor1,
   },
   title: {
     fontSize: 35,
     fontWeight: 'bold',
-    marginBottom: 10,
     color: bgColor5,
+    marginLeft: 70,
+    marginRight: 70,
+    margin: 10,
+    textAlign: 'center',
   },
   container2: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   img: {
-    height: 225,
-    width: 270,
-    margin: 50,
+    height: 200,
+    width: 240,
   },
   addBtn: {
     backgroundColor: bgColor5,
@@ -40,9 +42,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   tx2: {
-    color: 'black',
+    color: 'white',
     fontSize: 25,
-    margin: 5,
+    margin: 15,
+    textAlign: 'center',
+    marginTop: 25,
   },
   tx3: {
     color: bgColor3,
@@ -54,7 +58,6 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor5,
     height: 50,
     width: 50,
-    margin: 10,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -65,9 +68,12 @@ const styles = StyleSheet.create({
   container3: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '25%',
+    backgroundColor: bgColor3,
+    width: '100%',
   },
   btn3: {
-    marginLeft: '65%',
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -11,7 +11,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {addToCart} from '../../../redux/actions/cart';
+import {addToCart, incrementTotalItems} from '../../../redux/actions/cart';
 import {setInCart} from '../../../redux/actions/products';
 
 import {Products} from '../../../utils/getUser';
@@ -65,6 +65,7 @@ const RenderItem2 = ({item, navigation}) => {
             onPress={() => {
               dispatch(addToCart(item));
               dispatch(setInCart(item.id));
+              dispatch(incrementTotalItems());
             }}>
             <Text style={styles.txAddBtn}>Add to cart {renderIcon2()}</Text>
           </TouchableOpacity>
