@@ -14,6 +14,7 @@ const backOrders = (state = back_orders_initial_state, action) => {
       state.orders.push(action.orders);
       return {...state};
     case DELETE_ORDER:
+      state.orders.splice(action.index, 1);
       return {...state};
     case INCREMENT_TOTAL_ORDERS:
       return {

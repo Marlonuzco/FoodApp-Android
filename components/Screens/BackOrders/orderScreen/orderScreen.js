@@ -8,13 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {renderIcon} from '../../Categories/Products';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import ImgBg1 from '../../../../src/images/fondo3.jpeg';
+import ImgBg1 from '../../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
 function OrderScreen({route, navigation}) {
-  console.log(route);
   const values = route.params.map(i => i.totalPrice);
   const initialValues = 0;
   const sumWithInitial = values.reduce(
@@ -41,9 +39,6 @@ function OrderScreen({route, navigation}) {
             {renderIcon()}
           </TouchableOpacity>
           <Text style={styles.title}>Order</Text>
-          <TouchableOpacity>
-            <Icon name="trash" size={35} style={styles.trashIcon} />
-          </TouchableOpacity>
         </View>
         <ScrollView style={styles.scrollview}>
           {route.params.map(item => (

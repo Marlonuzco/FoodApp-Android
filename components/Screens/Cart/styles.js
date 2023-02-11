@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   tx9: {
-    color: 'white',
+    color: bgColor3,
     fontSize: 15,
   },
 });

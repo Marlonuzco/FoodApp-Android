@@ -100,6 +100,29 @@ const NoItemsInCart = ({navigation}) => {
   );
 };
 
+const RenderPayBtn = ({dispatch, cart}) => {
+  const State1 = () => {
+    if (cart.products > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  return (
+    <TouchableOpacity
+      style={styles.btnPay}
+      onPress={() => {
+        State1 ? (
+          (dispatch(addOrder(cart.products)), dispatch(incremenTotalOrders()))
+        ) : (
+          <></>
+        );
+      }}>
+      <Text style={styles.tx6}>Pay Total</Text>
+    </TouchableOpacity>
+  );
+};
+
 function CartScreen({cart, navigation}) {
   const dispatch = useDispatch();
 
@@ -162,14 +185,7 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx7}>$ {TotalToPay()}</Text>
         </View>
       </View>
-      <TouchableOpacity
-        style={styles.btnPay}
-        onPress={() => {
-          dispatch(addOrder(cart.products));
-          dispatch(incremenTotalOrders());
-        }}>
-        <Text style={styles.tx6}>Pay Total</Text>
-      </TouchableOpacity>
+      <RenderPayBtn dispatch={dispatch} cart={cart} />
     </ImageBackground>
   );
 }

@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginLeft: 100,
-    marginRight: 100,
+    position: 'absolute',
   },
   container2: {
     flex: 1,
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: 320,
   },
   trashIcon: {
     color: bgColor3,

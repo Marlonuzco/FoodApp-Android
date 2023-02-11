@@ -126,7 +126,7 @@ function HomeSreen({navigation, data, products}) {
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={products.Favorites}
+            data={products.Popular}
             keyExtractor={item => item.id}
             renderItem={item => (
               <RenderItem2

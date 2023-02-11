@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 import {Products} from '../../../../utils/getUser';
 import {renderIconsearch} from '../../Home/index';
 
+import img1 from '../../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
 const RenderItem = ({item, navigation, route}) => (
@@ -29,26 +31,28 @@ const RenderItem = ({item, navigation, route}) => (
 
 function ProductsCategories({route, navigation}) {
   return (
-    <View style={styles.container1}>
-      <Text style={styles.title1}>{route.params.name}</Text>
-      <View style={styles.container2}>
-        <TextInput
-          style={styles.input}
-          placeholder={'Search'}
-          autoCapitalize="none"
-          placeholderTextColor={'black'}
+    <ImageBackground source={img1} style={styles.background}>
+      <View style={styles.container1}>
+        <Text style={styles.title1}>{route.params.name}</Text>
+        <View style={styles.container2}>
+          <TextInput
+            style={styles.input}
+            placeholder={'Search'}
+            autoCapitalize="none"
+            placeholderTextColor={'black'}
+          />
+          <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
+        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={route.params.products}
+          keyExtractor={item => item.id}
+          renderItem={item => (
+            <RenderItem navigation={navigation} item={item.item} />
+          )}
         />
-        <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
       </View>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={route.params.products}
-        keyExtractor={item => item.id}
-        renderItem={item => (
-          <RenderItem navigation={navigation} item={item.item} />
-        )}
-      />
-    </View>
+    </ImageBackground>
   );
 }
 

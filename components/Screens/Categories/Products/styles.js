@@ -9,6 +9,9 @@ const bgColor5 = '#BF1A1A';
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+  },
+  container1: {
+    flex: 1,
     backgroundColor: bgColor1,
   },
   title: {
@@ -70,12 +73,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '25%',
-    backgroundColor: bgColor3,
     width: '100%',
   },
   btn3: {
     justifyContent: 'center',
     alignItems: 'center',
+    color: 'white',
   },
 });
 

@@ -10,7 +10,7 @@ export const SET_INCART = 'SET_INCART';
 export const SET_INCART_FALSE = 'SET_INCART_FALSE';
 
 const products_initial_state = {
-  Favorites: [
+  Popular: [
     {
       id: 9,
       name: 'Hot Dog',
@@ -61,7 +61,7 @@ const products_initial_state = {
 const products = (state = products_initial_state, action) => {
   switch (action.type) {
     case SET_INFAVORITES:
-      state.Favorites.map(i => {
+      state.Popular.map(i => {
         if (action.id === i.id) {
           let newValue = i;
           newValue.inFavorites = newValue.inFavorites = true;
@@ -69,7 +69,7 @@ const products = (state = products_initial_state, action) => {
       });
       return {...state};
     case DELETE_TO_INFAVORITES:
-      state.Favorites.map(i => {
+      state.Popular.map(i => {
         if (action.id === i.id) {
           let newValue = i;
           newValue.inFavorites = newValue.inFavorites = false;
@@ -77,7 +77,7 @@ const products = (state = products_initial_state, action) => {
       });
       return {...state};
     case SET_INCART:
-      state.Favorites.map(i => {
+      state.Popular.map(i => {
         if (action.id === i.id) {
           let newValue = i;
           newValue.inCart = newValue.inCart = true;
@@ -85,7 +85,7 @@ const products = (state = products_initial_state, action) => {
       });
       return {...state};
     case SET_INCART_FALSE:
-      state.Favorites.map(i => {
+      state.Popular.map(i => {
         if (action.id === i.id) {
           let newValue = i;
           newValue.inCart = newValue.inCart = false;

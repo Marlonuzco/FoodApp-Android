@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
-    backgroundColor: 'gray',
     height: '100%',
     width: '100%',
   },
@@ -65,6 +64,9 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  background: {
+    flex: 1,
   },
 });
 

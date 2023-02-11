@@ -20,6 +20,7 @@ import {
 import {addToCart, incrementTotalItems} from '../../../../redux/actions/cart';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import img1 from '../../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
 function Products({navigation, route}) {
@@ -27,73 +28,75 @@ function Products({navigation, route}) {
   const [inCart2, setInCart2] = useState(route.params.inCart);
   const dispatch = useDispatch();
   return (
-    <ScrollView style={styles.background}>
-      <View style={styles.container3}>
-        <TouchableOpacity
-          style={styles.btn2}
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Text style={styles.tx4}>{renderIcon()}</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>{route.params.name}</Text>
-        {inFavorites ? (
-          <>
-            <TouchableOpacity
-              style={styles.btn3}
-              onPress={() => {
-                dispatch(removeOneToFavorites(route.params.id));
-                dispatch(deleteTofavorites(route.params.id));
-                setInFavorites(!inFavorites);
-              }}>
-              {renderIcon3(inFavorites)}
-            </TouchableOpacity>
-          </>
-        ) : (
-          <>
-            <TouchableOpacity
-              style={styles.btn3}
-              onPress={() => {
-                dispatch(addToFavorites(route.params));
-                dispatch(setInfavorites(route.params.id));
-                setInFavorites(!inFavorites);
-              }}>
-              {renderIcon3(inFavorites)}
-            </TouchableOpacity>
-          </>
-        )}
-      </View>
+    <ImageBackground source={img1} style={styles.background}>
+      <ScrollView style={styles.container1}>
+        <View style={styles.container3}>
+          <TouchableOpacity
+            style={styles.btn2}
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <Text style={styles.tx4}>{renderIcon()}</Text>
+          </TouchableOpacity>
+          <Text style={styles.title}>{route.params.name}</Text>
+          {inFavorites ? (
+            <>
+              <TouchableOpacity
+                style={styles.btn3}
+                onPress={() => {
+                  dispatch(removeOneToFavorites(route.params.id));
+                  dispatch(deleteTofavorites(route.params.id));
+                  setInFavorites(!inFavorites);
+                }}>
+                {renderIcon3(inFavorites)}
+              </TouchableOpacity>
+            </>
+          ) : (
+            <>
+              <TouchableOpacity
+                style={styles.btn3}
+                onPress={() => {
+                  dispatch(addToFavorites(route.params));
+                  dispatch(setInfavorites(route.params.id));
+                  setInFavorites(!inFavorites);
+                }}>
+                {renderIcon3(inFavorites)}
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
 
-      <View style={styles.container2}>
-        <Image source={route.params.photo} style={styles.img} />
-        <Text style={styles.tx2}>Description</Text>
-        <Text style={styles.tx2}>{route.params.description}</Text>
-        <Text style={styles.tx3}>Sales for: {route.params.price}$</Text>
-        {inCart2 ? (
-          <TouchableOpacity
-            style={styles.addBtn}
-            onPress={() => {
-              navigation.navigate('Cart');
-              setInCart2(!inCart2);
-            }}>
-            <Text style={styles.txBtn}>
-              {route.params.counter} in {renderIcon2()}
-            </Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={styles.addBtn}
-            onPress={() => {
-              dispatch(addToCart(route.params));
-              dispatch(setInCart(route.params.id));
-              dispatch(incrementTotalItems());
-              setInCart2(!inCart2);
-            }}>
-            <Text style={styles.txBtn}>Add to cart {renderIcon2()}</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-    </ScrollView>
+        <View style={styles.container2}>
+          <Image source={route.params.photo} style={styles.img} />
+          <Text style={styles.tx2}>Description</Text>
+          <Text style={styles.tx2}>{route.params.description}</Text>
+          <Text style={styles.tx3}>Sales for: {route.params.price}$</Text>
+          {inCart2 ? (
+            <TouchableOpacity
+              style={styles.addBtn}
+              onPress={() => {
+                navigation.navigate('Cart');
+                setInCart2(!inCart2);
+              }}>
+              <Text style={styles.txBtn}>
+                {route.params.counter} in {renderIcon2()}
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.addBtn}
+              onPress={() => {
+                dispatch(addToCart(route.params));
+                dispatch(setInCart(route.params.id));
+                dispatch(incrementTotalItems());
+                setInCart2(!inCart2);
+              }}>
+              <Text style={styles.txBtn}>Add to cart {renderIcon2()}</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
@@ -107,7 +110,7 @@ function renderIcon3(inFavorites) {
   if (inFavorites === true) {
     return <Icon name="heart" size={35} solid={true} color={'red'} />;
   } else {
-    return <Icon name="heart" size={35} solid={false} color={'black'} />;
+    return <Icon name="heart" size={35} solid={false} color={'white'} />;
   }
 }
 

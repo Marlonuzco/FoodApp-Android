@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 import {Products} from '../../../utils/getUser';
 import {renderIconsearch} from '../Home/index';
 
+import img1 from '../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
 const RenderItem = ({item, navigation}) => (
@@ -26,7 +28,7 @@ const RenderItem = ({item, navigation}) => (
 
 function CategoriesSreen({navigation}) {
   return (
-    <>
+    <ImageBackground source={img1} style={styles.background}>
       <View style={styles.container1}>
         <Text style={styles.title1}>Categories</Text>
         <View style={styles.container2}>
@@ -47,7 +49,7 @@ function CategoriesSreen({navigation}) {
           )}
         />
       </View>
-    </>
+    </ImageBackground>
   );
 }
 
