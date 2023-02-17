@@ -37,27 +37,25 @@ const RenderItem = ({item, index, navigation, dispatch}) => {
       ],
     );
   return (
-    <View>
+    <View style={styles.renderItem}>
       <TouchableOpacity
-        style={styles.renderItem}
+        style={styles.container4}
         onPress={() => {
           navigation.navigate('OrderScreen', item);
         }}>
-        <View style={styles.container2}>
-          <Text style={styles.itemName}>Order {index + 1}</Text>
-        </View>
-        <View style={styles.container2}>
-          <Image source={orderIcon} style={styles.photo} />
-        </View>
+        <Image source={orderIcon} style={styles.photo} />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <View style={styles.container4}>
+        <Text style={styles.itemName}>Order {index + 1}</Text>
+      </View>
+      <View style={styles.container4}>
         <TouchableOpacity
           onPress={() => {
             showAlert();
           }}>
           <Icon name="trash" size={35} style={styles.trashIcon} />
         </TouchableOpacity>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };

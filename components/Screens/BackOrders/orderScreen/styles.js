@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 320,
+    marginRight: '80%',
   },
   trashIcon: {
     color: bgColor3,

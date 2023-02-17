@@ -39,7 +39,7 @@ const LoginScreens = () => {
   );
 };
 
-function App({auth, navigation}) {
+function App({auth}) {
   return (
     <>
       <SafeAreaProvider>
