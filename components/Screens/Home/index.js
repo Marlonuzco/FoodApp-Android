@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch, connect} from 'react-redux';
 import {
   View,
@@ -56,7 +56,8 @@ const RenderItem2 = ({item, navigation}) => {
               navigation.navigate('Cart');
             }}>
             <Text style={styles.txAddBtn}>
-              {item.counter} in {renderIcon2()}
+              {item.counter} in
+              <Icon name="shopping-cart" size={12} style={styles.icon} />
             </Text>
           </TouchableOpacity>
         ) : (
@@ -67,7 +68,10 @@ const RenderItem2 = ({item, navigation}) => {
               dispatch(setInCart(item.id));
               dispatch(incrementTotalItems());
             }}>
-            <Text style={styles.txAddBtn}>Add to cart {renderIcon2()}</Text>
+            <Text style={styles.txAddBtn}>
+              Add to cart{' '}
+              <Icon name="shopping-cart" size={12} style={styles.icon} />
+            </Text>
           </TouchableOpacity>
         )}
       </View>
@@ -93,7 +97,9 @@ function HomeSreen({navigation, data, products}) {
               autoCapitalize="none"
               placeholderTextColor={'black'}
             />
-            <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="search" size={25} style={styles.searchIcon} />
+            </TouchableOpacity>
           </View>
           <View style={styles.container5}>
             <Image source={Delivery} style={styles.imgDelivey} />
@@ -147,11 +153,3 @@ export default connect(store => ({
   data: store.cart,
   products: store.products,
 }))(HomeSreen);
-
-export function renderIconsearch() {
-  return <Icon name="search" size={25} style={styles.searchIcon} />;
-}
-
-function renderIcon2() {
-  return <Icon name="shopping-cart" size={12} style={styles.icon} />;
-}

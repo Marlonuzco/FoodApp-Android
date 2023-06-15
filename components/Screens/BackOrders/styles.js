@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   photo: {
-    height: '60%',
-    width: '100%',
+    height: 80,
+    width: 120,
+    marginRight: 5,
   },
   container2: {
     width: '50%',
@@ -58,9 +59,10 @@ const styles = StyleSheet.create({
   },
   container4: {
     height: '90%',
-    width: '30%',
-    justifyContent: 'center',
+    width: 270,
     alignItems: 'center',
+    flexDirection: 'row',
+    marginRight: 15,
   },
   trashIcon: {
     color: bgColor3,

@@ -44,18 +44,14 @@ const RenderItem = ({item, index, navigation, dispatch}) => {
           navigation.navigate('OrderScreen', item);
         }}>
         <Image source={orderIcon} style={styles.photo} />
-      </TouchableOpacity>
-      <View style={styles.container4}>
         <Text style={styles.itemName}>Order {index + 1}</Text>
-      </View>
-      <View style={styles.container4}>
-        <TouchableOpacity
-          onPress={() => {
-            showAlert();
-          }}>
-          <Icon name="trash" size={35} style={styles.trashIcon} />
-        </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          showAlert();
+        }}>
+        <Icon name="trash" size={35} style={styles.trashIcon} />
+      </TouchableOpacity>
     </View>
   );
 };
