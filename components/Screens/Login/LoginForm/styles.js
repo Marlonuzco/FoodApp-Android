@@ -61,10 +61,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 10,
   },
-  touchable3: {
-    color: 'white',
-    fontSize: 25,
-  },
   txtouchable2: {
     fontSize: 18,
     color: 'white',
@@ -76,10 +72,13 @@ const styles = StyleSheet.create({
   Loginbtn: {
     backgroundColor: bgColor5,
     height: 50,
-    width: 100,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 120,
+    flexDirection: 'row',
+  },
+  LoginbtnTx: {
+    color: 'white',
+    fontSize: 15,
+    marginRight: '5%',
   },
 });
 

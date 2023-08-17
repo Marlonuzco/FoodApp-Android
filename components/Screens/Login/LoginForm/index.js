@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   ScrollView,
   View,
@@ -7,35 +7,28 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import {useFormik} from 'formik';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
+import {login} from '../../../../redux/actions/auth';
 
+import ButtomComp from '../../Buttom/index';
 import img1 from './../../../../src/images/fondo2.jpeg';
 import styles from './styles';
 
-function LoginForm({login, auth, navigation}) {
+function LoginForm({navigation}) {
   const dispatch = useDispatch();
-  const [error, setError] = useState('');
   const [seePassword, setSeePassWord] = useState(true);
+  const {error, isFetching} = useSelector(store => store.auth);
 
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,
     onSubmit: formValue => {
-      setError('');
-      const {email, password} = formValue;
-      auth.users.map(e => {
-        const values = e;
-        if (email !== values.email || password !== values.password) {
-          setError('The email or password is incorrect');
-        } else {
-          dispatch({type: 'AUTH_LOGIN'});
-          navigation.navigate('Logged');
-        }
-      });
+      dispatch(login(formValue));
     },
   });
 
@@ -77,18 +70,26 @@ function LoginForm({login, auth, navigation}) {
               <TouchableOpacity
                 onPress={() => setSeePassWord(!seePassword)}
                 style={styles.showBtn}>
-                {renderIcon(seePassword)}
+                <RenderIcon seePassword={seePassword} />
               </TouchableOpacity>
             </View>
             <Text style={styles.error}>{formik.errors.password}</Text>
-            <Text style={styles.error}>{error}</Text>
+            {error && (
+              <Text style={styles.error}>Error en las credenciales</Text>
+            )}
           </View>
           <View style={styles.container4}>
-            <TouchableOpacity
-              style={styles.Loginbtn}
-              onPress={formik.handleSubmit}>
-              <Text style={styles.touchable3}>Log in {renderIcon2()}</Text>
-            </TouchableOpacity>
+            {isFetching ? (
+              <ActivityIndicator color={'white'} size={30} />
+            ) : (
+              <ButtomComp
+                tittle={'Log in'}
+                tittleStyle={styles.LoginbtnTx}
+                extraComp={<RenderIcon2 IconColor={'white'} />}
+                ButtomStyle={styles.Loginbtn}
+                onPress={() => formik.handleSubmit()}
+              />
+            )}
             <TouchableOpacity
               style={styles.touchable2}
               onPress={() => {
@@ -103,9 +104,7 @@ function LoginForm({login, auth, navigation}) {
   );
 }
 
-export default connect(store => ({
-  auth: store.auth,
-}))(LoginForm);
+export default LoginForm;
 
 function initialValues() {
   return {email: '', password: ''};
@@ -123,14 +122,14 @@ function validationSchema() {
   };
 }
 
-export function renderIcon(seePassword) {
+export const RenderIcon = ({seePassword}) => {
   if (seePassword === true) {
-    return <Icon name="eye-slash" size={25} color={'black'} />;
+    return <Icon name="eye-slash" size={20} color={'black'} />;
   } else {
-    return <Icon name="eye" size={25} color={'#BF1A1A'} />;
+    return <Icon name="eye" size={20} color={'#BF1A1A'} />;
   }
-}
+};
 
-export function renderIcon2() {
-  return <Icon name="sign-in-alt" size={20} />;
-}
+export const RenderIcon2 = ({IconColor}) => {
+  return <Icon name="sign-in-alt" size={20} color={IconColor} />;
+};

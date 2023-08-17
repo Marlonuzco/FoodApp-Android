@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     fontSize: 15,
     textAlign: 'center',
+    color: 'black',
   },
   emailInputContainer: {
     alignItems: 'center',
@@ -61,7 +62,8 @@ const styles = StyleSheet.create({
     width: 300,
     fontSize: 15,
     textAlign: 'center',
-    marginBottom: 35,
+    marginBottom: 2,
+    color: 'black',
   },
   btns: {
     padding: 20,
@@ -71,14 +73,12 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor5,
     height: 50,
     width: 120,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
+    flexDirection: 'row',
   },
   txTouch: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 15,
+    marginRight: '5%',
   },
   inputPassWordView: {
     flexDirection: 'row',
@@ -89,6 +89,13 @@ const styles = StyleSheet.create({
   },
   showBtn: {
     marginLeft: '70%',
+  },
+  errorTx: {
+    fontSize: 12,
+    color: 'red',
+    textAlign: 'center',
+    width: '100%',
+    marginBottom: 10,
   },
 });
 

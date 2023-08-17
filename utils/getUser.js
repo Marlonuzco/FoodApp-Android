@@ -1,4 +1,5 @@
 import UserIMG from '../src/images/UserImg.png';
+import {axiosInstance} from '../axios';
 
 import pizzaIcon from '../src/images/iconos/pizza1.1.png';
 import burguerIcon from '../src/images/iconos/burguer1.png';
@@ -7,6 +8,8 @@ import pastaIcon from '../src/images/iconos/pasta1.png';
 import arrozIcon from '../src/images/iconos/arroz2.png';
 import hotDogIcon from '../src/images/iconos/hotdog1.png';
 import drinkIcon from '../src/images/iconos/drinks.png';
+
+export const defaultUserImgUrl = `${axiosInstance.getUri()}/public/userdefaultimg.png`;
 
 export const users = [
   {

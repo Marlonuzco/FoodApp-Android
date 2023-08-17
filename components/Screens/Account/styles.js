@@ -61,6 +61,11 @@ const styles = StyleSheet.create({
     width: 170,
     borderRadius: 170,
   },
+  profileImageTx: {
+    color: 'white',
+    fontSize: 15,
+    marginTop: 10,
+  },
 });
 
 export default styles;

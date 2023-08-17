@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {connect, useDispatch} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import {
   View,
   Text,
@@ -10,75 +10,43 @@ import {
 } from 'react-native';
 import {logout} from '../../../redux/actions/auth';
 
-import {axiosInstance} from '../../../axios';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import ImgBg1 from '../../../src/images/fondo2.jpeg';
+import {defaultUserImgUrl} from '../../../utils/getUser';
+import {serverUrl} from '../../../axios';
 
 import styles from './styles';
 
 function AccountScreen({navigation}) {
-  const [userData, setUserData] = useState([]);
-  const [Fail, setFail] = useState(false);
   const dispatch = useDispatch();
+  const {userInfo} = useSelector(store => store.auth);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const response = await axiosInstance.get('/users');
-        setUserData(response.data);
-      } catch (error) {
-        setFail(true);
-      }
-    };
-    getUserData();
-  }, [setUserData]);
+  const newImgUrl = userInfo.profileimage?.replace(
+    'http://localhost:4100',
+    serverUrl,
+  );
+  const profileimageUri = {uri: newImgUrl || defaultUserImgUrl};
 
+  console.log('userInfo', userInfo);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
-        {Fail ? (
-          <View
-            style={[
-              styles.container2,
-              {
-                height: 150,
-                width: '85%',
-                marginTop: '60%',
-                marginBottom: '40%',
-                justifyContent: 'center',
-              },
-            ]}>
-            <Text style={styles.title2}>Error en la carga de datos</Text>
-          </View>
-        ) : (
-          userData.map(item => (
-            <View key={item.id}>
-              <View style={styles.container1}>
-                <Text style={styles.title}>Account</Text>
-                <Text style={styles.title2}> User Details : </Text>
-                <Image
-                  style={styles.img1}
-                  source={{
-                    uri: 'http://10.0.2.2:3001/assets/images/UserPhoto/UserImg.png',
-                  }}
-                />
-                <Text>Profile Photo</Text>
-              </View>
-              <View style={styles.container2}>
-                <Text style={styles.tx2}>E-mail: {item.userInfo.email}</Text>
-                <Text style={styles.tx2}>
-                  Firstname: {item.userInfo.firstname}
-                </Text>
-                <Text style={styles.tx2}>
-                  LastName: {item.userInfo.lastName}
-                </Text>
-                <Text style={styles.tx2}>
-                  Username: {item.userInfo.username}
-                </Text>
-              </View>
-            </View>
-          ))
-        )}
+        <View style={styles.container1}>
+          <Text style={styles.title}>Account</Text>
+          <Text style={styles.title2}> User Details : </Text>
+          <Image
+            style={styles.img1}
+            source={profileimageUri}
+            alt="Profile Image"
+          />
+          <Text style={styles.profileImageTx}>Profile Photo</Text>
+        </View>
+        <View style={styles.container2}>
+          <Text style={styles.tx2}>E-mail: {userInfo.email}</Text>
+          <Text style={styles.tx2}>Firstname: {userInfo.firstname}</Text>
+          <Text style={styles.tx2}>LastName: {userInfo.lastname}</Text>
+          <Text style={styles.tx2}>Username: {userInfo.username}</Text>
+        </View>
         <View style={styles.container3}>
           <TouchableOpacity
             style={styles.touchable1}
