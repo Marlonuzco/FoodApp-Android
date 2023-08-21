@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {logout} from '../../../redux/actions/auth';
 
+import ButtomComp from '../Buttom/index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import ImgBg1 from '../../../src/images/fondo2.jpeg';
 import {defaultUserImgUrl} from '../../../utils/getUser';
@@ -19,7 +20,7 @@ import styles from './styles';
 
 function AccountScreen({navigation}) {
   const dispatch = useDispatch();
-  const {userInfo} = useSelector(store => store.auth);
+  const {userInfo, token} = useSelector(store => store.auth);
 
   const newImgUrl = userInfo.profileimage?.replace(
     'http://localhost:4100',
@@ -28,6 +29,7 @@ function AccountScreen({navigation}) {
   const profileimageUri = {uri: newImgUrl || defaultUserImgUrl};
 
   console.log('userInfo', userInfo);
+  console.log('token', token);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
