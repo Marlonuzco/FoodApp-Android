@@ -1,5 +1,5 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
   Text,
@@ -11,16 +11,27 @@ import {
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {search_categories} from '../../../redux/actions/products';
 
-import {Products} from '../../../utils/getUser';
 import icon1 from '../../../src/images/iconos/icon2.png';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import Delivery from '../../../src/images/Delivery.png';
-import {RenderItem, RenderItem2} from './components/RenderItem';
+import {RenderItem, RenderItem2} from './components/RenderItem/index';
+import RenderEmptyComp from './components/RenderEmptyComp/index';
 
 import styles from './styles';
 
-function HomeSreen({navigation, data, products}) {
+function HomeSreen({navigation}) {
+  const dispatch = useDispatch();
+  const {token} = useSelector(store => store.auth);
+  const {categories, populars} = useSelector(store => store.products);
+
+  useEffect(() => {
+    const getCategories = () => {
+      dispatch(search_categories(token));
+    };
+    getCategories();
+  }, [dispatch, token]);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
@@ -51,6 +62,7 @@ function HomeSreen({navigation, data, products}) {
           </View>
         </View>
         <View>
+          {/*Popular list*/}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Categories');
@@ -58,28 +70,29 @@ function HomeSreen({navigation, data, products}) {
             <Text style={styles.title2}>Categories</Text>
           </TouchableOpacity>
           <FlatList
+            ListEmptyComponent={<RenderEmptyComp />}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={Products.categories}
+            data={categories}
             keyExtractor={item => item.id}
             renderItem={item => (
               <RenderItem navigation={navigation} item={item.item} />
             )}
           />
         </View>
+        {/*Popular list*/}
         <Text style={styles.title2}>Popular</Text>
         <View style={styles.container4}>
-          {/* popular list */}
           <FlatList
+            ListEmptyComponent={<RenderEmptyComp />}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={products.Popular}
+            data={populars}
             keyExtractor={item => item.id}
             renderItem={item => (
               <RenderItem2
                 navigation={navigation}
                 item={item.item}
-                data={data}
                 index={item.index}
               />
             )}
@@ -90,7 +103,5 @@ function HomeSreen({navigation, data, products}) {
     </ImageBackground>
   );
 }
-export default connect(store => ({
-  data: store.cart,
-  products: store.products,
-}))(HomeSreen);
+
+export default HomeSreen;

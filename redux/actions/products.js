@@ -1,34 +1,40 @@
+import {axiosInstance} from '../../axios';
 import {
-  SET_INFAVORITES,
-  DELETE_TO_INFAVORITES,
-  SET_INCART,
-  SET_INCART_FALSE,
+  SEARCH_CATEGORIES,
+  SEARCH_PRODUCTS,
+  SET_CATEGORIES,
+  SET_PRODUCTS,
+  ERROR_IN_SEARCH_CATEORIES,
+  ERROR_IN_SEARCH_PRODUCTS,
 } from '../reducer/products';
 
-export const setInfavorites = id => {
-  return {
-    type: SET_INFAVORITES,
-    id,
-  };
+const categoriesURL = '/categories';
+
+export const search_categories = token => async dispatch => {
+  dispatch({type: SEARCH_CATEGORIES});
+  try {
+    const response = await axiosInstance.get(categoriesURL, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      dispatch(set_categories(response.data));
+    } else {
+      dispatch(error_in_search_categories());
+      console.log('error en search_categories');
+    }
+  } catch (error) {
+    dispatch(error_in_search_categories());
+    console.log('error en search_categories', error);
+  }
 };
 
-export const deleteTofavorites = id => {
-  return {
-    type: DELETE_TO_INFAVORITES,
-    id,
-  };
-};
+export const set_categories = data => ({
+  type: SET_CATEGORIES,
+  categories: data.categories,
+});
 
-export const setInCart = id => {
-  return {
-    type: SET_INCART,
-    id,
-  };
-};
-
-export const setInCartFalse = id => {
-  return {
-    type: SET_INCART_FALSE,
-    id,
-  };
-};
+export const error_in_search_categories = () => ({
+  type: ERROR_IN_SEARCH_CATEORIES,
+});

@@ -20,7 +20,6 @@ import {
 import {addOrder, incremenTotalOrders} from '../../../redux/actions/backOrders';
 
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
-import {setInCartFalse} from '../../../redux/actions/products';
 import styles from './styles';
 
 const RenderItem = ({item, index, dispatch, navigation}) => {
@@ -41,10 +40,7 @@ const RenderItem = ({item, index, dispatch, navigation}) => {
               style={styles.btn1}
               onPress={() => {
                 if (item.counter === 1) {
-                  return (
-                    dispatch(removeFromCart(item.id)),
-                    dispatch(setInCartFalse(item.id))
-                  );
+                  return dispatch(removeFromCart(item.id));
                 } else {
                   return (
                     dispatch(decrementCount(index)),
@@ -75,7 +71,6 @@ const RenderItem = ({item, index, dispatch, navigation}) => {
       <TouchableOpacity
         onPress={() => {
           dispatch(removeFromCart(item.id));
-          dispatch(setInCartFalse(item.id));
           dispatch(decrementTotalItems());
         }}
         style={styles.iconTrash}>

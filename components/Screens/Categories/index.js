@@ -8,7 +8,6 @@ import {
   TextInput,
   ImageBackground,
 } from 'react-native';
-import {Products} from '../../../utils/getUser';
 import {renderIconsearch} from '../Home/index';
 
 import img1 from '../../../src/images/fondo5.jpeg';
@@ -42,7 +41,7 @@ function CategoriesSreen({navigation}) {
         </View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={Products.categories}
+          /*  data={Products.categories} */
           keyExtractor={item => item.id}
           renderItem={item => (
             <RenderItem navigation={navigation} item={item.item} />

@@ -12,11 +12,6 @@ import {
   addToFavorites,
   removeOneToFavorites,
 } from '../../../../redux/actions/favorites';
-import {
-  setInfavorites,
-  deleteTofavorites,
-  setInCart,
-} from '../../../../redux/actions/products';
 import {addToCart, incrementTotalItems} from '../../../../redux/actions/cart';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -45,7 +40,6 @@ function Products({navigation, route}) {
                 style={styles.btn3}
                 onPress={() => {
                   dispatch(removeOneToFavorites(route.params.id));
-                  dispatch(deleteTofavorites(route.params.id));
                   setInFavorites(!inFavorites);
                 }}>
                 {renderIcon3(inFavorites)}
@@ -57,7 +51,6 @@ function Products({navigation, route}) {
                 style={styles.btn3}
                 onPress={() => {
                   dispatch(addToFavorites(route.params));
-                  dispatch(setInfavorites(route.params.id));
                   setInFavorites(!inFavorites);
                 }}>
                 {renderIcon3(inFavorites)}
@@ -87,7 +80,6 @@ function Products({navigation, route}) {
               style={styles.addBtn}
               onPress={() => {
                 dispatch(addToCart(route.params));
-                dispatch(setInCart(route.params.id));
                 dispatch(incrementTotalItems());
                 setInCart2(!inCart2);
               }}>

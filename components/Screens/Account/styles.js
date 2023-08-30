@@ -28,14 +28,12 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor5,
     width: 110,
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 12,
-    padding: 8,
+    flexDirection: 'row',
   },
   tx1: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 15,
+    marginRight: '5%',
   },
   tx2: {
     color: 'white',

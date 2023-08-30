@@ -8,7 +8,7 @@ import {
   TextInput,
   ImageBackground,
 } from 'react-native';
-import {Products} from '../../../../utils/getUser';
+/* import {Products} from '../../../../utils/getUser'; */
 import {renderIconsearch} from '../../Home/index';
 
 import img1 from '../../../../src/images/fondo5.jpeg';
