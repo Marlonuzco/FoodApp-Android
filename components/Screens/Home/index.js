@@ -11,7 +11,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {search_categories} from '../../../redux/actions/products';
+import {search_categories_and_populars} from '../../../redux/actions/products';
 
 import icon1 from '../../../src/images/iconos/icon2.png';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
@@ -27,10 +27,10 @@ function HomeSreen({navigation}) {
   const {categories, populars} = useSelector(store => store.products);
 
   useEffect(() => {
-    const getCategories = () => {
-      dispatch(search_categories(token));
+    const getCategoriesAndPopulars = () => {
+      dispatch(search_categories_and_populars(token));
     };
-    getCategories();
+    getCategoriesAndPopulars();
   }, [dispatch, token]);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
@@ -75,9 +75,7 @@ function HomeSreen({navigation}) {
             showsHorizontalScrollIndicator={false}
             data={categories}
             keyExtractor={item => item.id}
-            renderItem={item => (
-              <RenderItem navigation={navigation} item={item.item} />
-            )}
+            renderItem={item => <RenderItem item={item.item} />}
           />
         </View>
         {/*Popular list*/}
@@ -90,11 +88,7 @@ function HomeSreen({navigation}) {
             data={populars}
             keyExtractor={item => item.id}
             renderItem={item => (
-              <RenderItem2
-                navigation={navigation}
-                item={item.item}
-                index={item.index}
-              />
+              <RenderItem2 item={item.item} index={item.index} />
             )}
             showsVerticalScrollIndicator={false}
           />

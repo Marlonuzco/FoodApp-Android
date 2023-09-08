@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
 import {login} from '../../../../redux/actions/auth';
 
-import ButtomComp from '../../Buttom/index';
+import ButtonComp from '../../../Button/index';
 import img1 from './../../../../src/images/fondo2.jpeg';
 import styles from './styles';
 
@@ -82,11 +82,11 @@ function LoginForm({navigation}) {
             {isFetching ? (
               <ActivityIndicator color={'white'} size={30} />
             ) : (
-              <ButtomComp
+              <ButtonComp
                 tittle={'Log in'}
                 tittleStyle={styles.LoginbtnTx}
                 extraComp={<RenderIcon2 IconColor={'white'} />}
-                ButtomStyle={styles.Loginbtn}
+                ButtonStyle={styles.Loginbtn}
                 onPress={() => formik.handleSubmit()}
               />
             )}

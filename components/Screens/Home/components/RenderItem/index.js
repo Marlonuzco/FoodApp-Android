@@ -1,13 +1,16 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {serverUrl} from '../../../../../axios';
+import {addToCart} from '../../../../../redux/actions/cart';
 
+import {serverUrl} from '../../../../../axios';
 import styles from './styles';
 
 //categories list component
-export const RenderItem = ({item, navigation}) => {
+export const RenderItem = ({item}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.itemContainer}>
       <TouchableOpacity
@@ -27,40 +30,41 @@ export const RenderItem = ({item, navigation}) => {
 };
 
 //popular list component
-export const RenderItem2 = ({item}) => {
+export const RenderItem2 = ({item, index}) => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {name, incart, counter, price, photo} = item.product;
+
   return (
     <View style={styles.itemContainer2}>
       <TouchableOpacity
-      /* onPress={() => {
-          navigation.navigate('Products', item);
-        }} */
-      >
-        <Image style={styles.imgItem2} source={item.photo} />
+        onPress={() => {
+          navigation.navigate('Products', item.product);
+        }}>
+        <Image style={styles.imgItem2} source={{uri: `${serverUrl}${photo}`}} />
       </TouchableOpacity>
       <View style={styles.itemview2}>
-        <Text style={styles.itemTitle2}>{item.name}</Text>
-        <Text style={styles.price}>Sales for: {item.price}$</Text>
-        {item.inCart ? (
-          <TouchableOpacity
-            style={styles.addbtn}
-            /*  onPress={() => {
-              navigation.navigate('Cart');
-            }} */
-          >
+        <Text style={styles.itemTitle2}>{name}</Text>
+        <Text style={styles.price}>Sales for: {price}$</Text>
+        <TouchableOpacity
+          style={styles.addbtn}
+          onPress={() => {
+            incart
+              ? navigation.navigate('Cart')
+              : dispatch(addToCart(item.product));
+          }}>
+          {incart ? (
             <Text style={styles.txAddBtn}>
-              {item.counter} in
+              {counter} in
               <Icon name="shopping-cart" size={12} style={styles.icon} />
             </Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity style={styles.addbtn}>
+          ) : (
             <Text style={styles.txAddBtn}>
               Add to cart{' '}
               <Icon name="shopping-cart" size={12} style={styles.icon} />
             </Text>
-          </TouchableOpacity>
-        )}
+          )}
+        </TouchableOpacity>
       </View>
     </View>
   );

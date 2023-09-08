@@ -3,13 +3,13 @@ import {Text, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
-const ButtomComp = ({title, children, onPress, BtnStyle, TitleStyle}) => {
+const ButtonComp = ({title, children, onPress, BtnStyle, TitleStyle}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.Buttom, BtnStyle]}>
+    <TouchableOpacity onPress={onPress} style={[styles.Button, BtnStyle]}>
       {title && <Text style={[styles.Text, TitleStyle]}>{title}</Text>}
       {children}
     </TouchableOpacity>
   );
 };
 
-export default ButtomComp;
+export default ButtonComp;

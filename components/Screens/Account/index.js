@@ -3,7 +3,7 @@ import {connect, useDispatch, useSelector} from 'react-redux';
 import {View, Text, Image, ScrollView, ImageBackground} from 'react-native';
 import {logout} from '../../../redux/actions/auth';
 
-import ButtomComp from '../Buttom/index';
+import ButtonComp from '../../Button/index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import ImgBg1 from '../../../src/images/fondo2.jpeg';
 import {defaultUserImgUrl} from '../../../utils/utils';
@@ -40,8 +40,8 @@ function AccountScreen() {
           <Text style={styles.tx2}>Username: {userInfo.username}</Text>
         </View>
         <View style={styles.container3}>
-          <ButtomComp
-            ButtomStyle={styles.touchable1}
+          <ButtonComp
+            ButtonStyle={styles.touchable1}
             tittle={'Log out'}
             tittleStyle={styles.tx1}
             onPress={() => {

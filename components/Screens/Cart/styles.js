@@ -136,29 +136,9 @@ const styles = StyleSheet.create({
     width: '45%',
     justifyContent: 'center',
   },
-  title3: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: '40%',
-    color: 'gray',
-  },
-  btn2: {
-    backgroundColor: bgColor1,
-    borderRadius: 20,
-    height: 60,
-    width: 200,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-  },
   tx8: {
     fontSize: 17,
     fontWeight: 'bold',
-  },
-  tx9: {
-    color: bgColor3,
-    fontSize: 15,
   },
 });
 

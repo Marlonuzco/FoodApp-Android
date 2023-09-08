@@ -1,20 +1,19 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  ButtomComp: {
-    width: '100%',
-    height: '100%',
+  Button: {
+    height: 35,
+    width: '50%',
     borderRadius: 10,
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 5,
-    backgroundColor: 'white',
   },
-  tittle: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  Text: {
     color: 'black',
+    fontWeight: 'bold',
+    fontSize: 12,
   },
 });
 

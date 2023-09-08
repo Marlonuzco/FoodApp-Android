@@ -19,104 +19,10 @@ import {
 } from '../../../redux/actions/cart';
 import {addOrder, incremenTotalOrders} from '../../../redux/actions/backOrders';
 
+import RenderItem from './RenderItem';
+import RenderEmptyComp from './RenderEmptyComp';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import styles from './styles';
-
-const RenderItem = ({item, index, dispatch, navigation}) => {
-  return (
-    <View style={styles.container1}>
-      <View style={styles.renderItem}>
-        <TouchableOpacity
-          style={styles.container2}
-          onPress={() => {
-            navigation.navigate('Products', item);
-          }}>
-          <Image style={styles.photo} source={item.photo} />
-        </TouchableOpacity>
-        <View style={styles.container2}>
-          <Text style={styles.title2}>{item.name}</Text>
-          <View style={styles.container3}>
-            <TouchableOpacity
-              style={styles.btn1}
-              onPress={() => {
-                if (item.counter === 1) {
-                  return dispatch(removeFromCart(item.id));
-                } else {
-                  return (
-                    dispatch(decrementCount(index)),
-                    dispatch(decrementTotalPrice(index))
-                  );
-                }
-              }}>
-              <Text style={styles.tx1}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.tx2}>{item.counter}</Text>
-            <TouchableOpacity
-              style={styles.btn1}
-              onPress={() => {
-                dispatch(incrementCount(index));
-                dispatch(incremenTotalPrice(index));
-              }}>
-              <Text style={styles.tx1}>+</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.container2}>
-          <Text style={styles.tx3}>Price c/u</Text>
-          <Text style={styles.tx4}>{item.price} $</Text>
-          <Text style={styles.tx3}>Total Price</Text>
-          <Text style={styles.tx4}>{item.totalPrice} $</Text>
-        </View>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          dispatch(removeFromCart(item.id));
-          dispatch(decrementTotalItems());
-        }}
-        style={styles.iconTrash}>
-        {renderTrashIcon()}
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const NoItemsInCart = ({navigation}) => {
-  return (
-    <>
-      <Text style={styles.title3}>No Items</Text>
-      <TouchableOpacity
-        style={styles.btn2}
-        onPress={() => {
-          navigation.navigate('Categories');
-        }}>
-        <Text style={styles.tx9}>! Click here to order now ¡</Text>
-      </TouchableOpacity>
-    </>
-  );
-};
-
-const RenderPayBtn = ({dispatch, cart}) => {
-  const State1 = () => {
-    if (cart.products > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  return (
-    <TouchableOpacity
-      style={styles.btnPay}
-      onPress={() => {
-        State1 ? (
-          (dispatch(addOrder(cart.products)), dispatch(incremenTotalOrders()))
-        ) : (
-          <></>
-        );
-      }}>
-      <Text style={styles.tx6}>Pay Total</Text>
-    </TouchableOpacity>
-  );
-};
 
 function CartScreen({cart, navigation}) {
   const dispatch = useDispatch();
@@ -142,7 +48,7 @@ function CartScreen({cart, navigation}) {
       <View style={styles.view1}>
         <Text style={styles.title}>My cart</Text>
         <FlatList
-          ListEmptyComponent={<NoItemsInCart navigation={navigation} />}
+          ListEmptyComponent={<RenderEmptyComp />}
           data={cart.products}
           keyExtractor={item => item.id}
           renderItem={item => (
@@ -180,7 +86,13 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx7}>$ {TotalToPay()}</Text>
         </View>
       </View>
-      <RenderPayBtn dispatch={dispatch} cart={cart} />
+      <TouchableOpacity
+        style={styles.btnPay}
+        onPress={() => {
+          cart.products.length > 0 && dispatch();
+        }}>
+        <Text style={styles.tx6}>Pay Total</Text>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -188,7 +100,3 @@ function CartScreen({cart, navigation}) {
 export default connect(store => ({
   cart: store.cart,
 }))(CartScreen);
-
-export function renderTrashIcon() {
-  return <Icon name={'trash'} size={30} style={styles.renderIconTrash} />;
-}

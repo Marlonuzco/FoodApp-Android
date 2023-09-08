@@ -15,7 +15,7 @@ import {send_new_user} from '../../../../redux/actions/auth';
 
 import {RenderIcon, RenderIcon2} from '../LoginForm';
 import img1 from '../../../../src/images/fondo2.jpeg';
-import ButtomComp from '../../Buttom/index';
+import ButtonComp from '../../../Button/index';
 
 import styles from './styles';
 
@@ -131,13 +131,13 @@ function LoginRegisterScreen({navigation}) {
             {isFetching ? (
               <ActivityIndicator color={'white'} size={30} />
             ) : (
-              <ButtomComp
+              <ButtonComp
                 onPress={() => {
                   formik.handleSubmit();
                 }}
                 tittle={'Sign Up'}
                 tittleStyle={styles.txTouch}
-                ButtomStyle={styles.touchLoged}
+                ButtonStyle={styles.touchLoged}
                 extraComp={<RenderIcon2 IconColor={'white'} />}
               />
             )}
