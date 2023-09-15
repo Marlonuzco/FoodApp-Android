@@ -41,10 +41,12 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   container2: {
     flexDirection: 'row',
     alignItems: 'center',
+    margin: 10,
   },
   container3: {
     marginTop: 10,
@@ -78,16 +80,11 @@ const styles = StyleSheet.create({
   img2: {
     height: 50,
     width: 80,
-  },
-  searchIcon: {
-    color: bgColor1,
-    marginLeft: -40,
-  },
-  touchable2: {
-    marginLeft: '55%',
+    marginRight: '25%',
   },
   container4: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   container5: {
     height: 100,
@@ -123,6 +120,49 @@ const styles = StyleSheet.create({
   tx4: {
     color: 'white',
     margin: 8,
+  },
+  viewCategories: {
+    height: 140,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  InputStyle: {
+    width: '50%',
+    height: 45,
+  },
+  SearchBtnScreen: {
+    height: 45,
+    width: 150,
+    marginLeft: '10%',
+    backgroundColor: bgColor4,
+    flexDirection: 'row',
+  },
+  SearchBtnTitle: {
+    color: 'black',
+    fontSize: 12,
+    marginRight: 5,
+    letterSpacing: 0.5,
+  },
+  dataErrorView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dataErrorText: {
+    color: bgColor4,
+    fontSize: 12,
+    letterSpacing: 0.5,
+    fontWeight: 'bold',
+  },
+  retryBtn: {
+    backgroundColor: bgColor4,
+    marginTop: 15,
+    flexDirection: 'row',
+    height: 40,
+    width: 80,
+  },
+  retryBtnTitle: {
+    marginRight: 5,
+    fontSize: 13,
   },
 });
 

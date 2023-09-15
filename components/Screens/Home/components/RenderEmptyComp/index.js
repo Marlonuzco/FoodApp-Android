@@ -10,8 +10,10 @@ function RenderEmptyComp() {
   return (
     <View style={styles.view0}>
       {isSearching && <ActivityIndicator size={30} color={bgColor3} />}
-      {error && <Text>Error, data not found</Text>}
-      {!isSearching && !error && <Text>No error , data not found</Text>}
+      {error && <Text style={styles.Tx}>Error, data not found</Text>}
+      {!isSearching && !error && (
+        <Text style={styles.Tx}>No error , data not found</Text>
+      )}
     </View>
   );
 }

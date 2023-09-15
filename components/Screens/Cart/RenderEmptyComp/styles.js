@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  tittle: {
+  title: {
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',

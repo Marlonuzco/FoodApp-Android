@@ -9,6 +9,7 @@ import {
 } from '../reducer/products';
 
 const categoriesAndPopularsURL = '/categories-populars';
+const productsCategoriesURL = '/categories-products';
 
 export const search_categories_and_populars = token => async dispatch => {
   dispatch({type: SEARCH_CATEGORIES_AND_POPULARS});
@@ -38,4 +39,38 @@ export const set_categories = data => ({
 
 export const error_in_search_categories = () => ({
   type: ERROR_IN_SEARCH_CATEORIES_AND_POPULARS,
+});
+
+export const search_products = (category_id, token) => async dispatch => {
+  dispatch({type: SEARCH_PRODUCTS});
+  console.log('category_id', category_id);
+  try {
+    const response = await axiosInstance.post(
+      productsCategoriesURL,
+      category_id,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (response.status === 200) {
+      dispatch(set_products(response.data));
+    } else {
+      dispatch(error_in_search_products());
+      console.log('error en search_products');
+    }
+  } catch (error) {
+    dispatch(error_in_search_products());
+    console.log('error en search products', error);
+  }
+};
+
+export const set_products = data => ({
+  type: SET_PRODUCTS,
+  products: data.products,
+});
+
+export const error_in_search_products = () => ({
+  type: ERROR_IN_SEARCH_PRODUCTS,
 });

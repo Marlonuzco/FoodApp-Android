@@ -41,13 +41,13 @@ function AccountScreen() {
         </View>
         <View style={styles.container3}>
           <ButtonComp
-            ButtonStyle={styles.touchable1}
-            tittle={'Log out'}
-            tittleStyle={styles.tx1}
+            BtnStyle={styles.touchable1}
+            title={'Log out'}
+            TitleStyle={styles.tx1}
             onPress={() => {
               dispatch(logout());
             }}
-            extraComp={<Icon name="sign-out-alt" size={20} color={'white'} />}
+            children={<Icon name="sign-out-alt" size={20} color={'white'} />}
           />
         </View>
       </ScrollView>

@@ -1,51 +1,47 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  TextInput,
-  ImageBackground,
-} from 'react-native';
-import {renderIconsearch} from '../Home/index';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {View, FlatList, ImageBackground} from 'react-native';
+import {search_categories_and_populars} from '../../../redux/actions/products';
 
+import {RenderItem, RenderEmptyComp} from './RenderItem/index';
+import SearchInput from '../../SearchInput';
 import img1 from '../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
-const RenderItem = ({item, navigation}) => (
-  <TouchableOpacity
-    onPress={() => {
-      navigation.navigate('ProductsCategories', item);
-    }}>
-    <View style={styles.itemContainer}>
-      <Image style={styles.imgItem} source={item.photo} />
-      <Text style={styles.itemTitle}>{item.name}</Text>
-    </View>
-  </TouchableOpacity>
-);
+const HeaderRight = ({}) => {
+  return <SearchInput setInputStyle={styles.SearchInput} />;
+};
 
 function CategoriesSreen({navigation}) {
+  const dispatch = useDispatch();
+  const [retry, setRetry] = useState(false);
+  const {token} = useSelector(store => store.auth);
+  const {categories} = useSelector(store => store.products);
+
+  useEffect(() => {
+    const fetchCategoriesAndPopular = () => {
+      if (categories.length < 0) {
+        dispatch(search_categories_and_populars(token));
+      }
+    };
+    navigation.setOptions({headerRight: () => <HeaderRight />});
+    fetchCategoriesAndPopular();
+    setRetry(false);
+  }, [navigation, retry]);
   return (
     <ImageBackground source={img1} style={styles.background}>
-      <View style={styles.container1}>
-        <Text style={styles.title1}>Categories</Text>
-        <View style={styles.container2}>
-          <TextInput
-            style={styles.input}
-            placeholder={'Search'}
-            autoCapitalize="none"
-            placeholderTextColor={'black'}
-          />
-          <TouchableOpacity>{renderIconsearch()}</TouchableOpacity>
-        </View>
+      <View style={styles.CategoriesContainer}>
         <FlatList
-          showsVerticalScrollIndicator={false}
-          /*  data={Products.categories} */
+          data={categories}
           keyExtractor={item => item.id}
-          renderItem={item => (
-            <RenderItem navigation={navigation} item={item.item} />
-          )}
+          renderItem={item => <RenderItem item={item} />}
+          ListEmptyComponent={
+            <RenderEmptyComp
+              retry={() => {
+                setRetry(true);
+              }}
+            />
+          }
         />
       </View>
     </ImageBackground>

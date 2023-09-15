@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-
-const bgColor2 = 'rgba(0, 0, 0, 0.8)';
-const bgColor1 = '#000000c0';
-const bgColor3 = '#FFA200';
-const bgColor4 = '#EEEEEE';
-const bgColor5 = '#BF1A1A';
+import {
+  bgColor1,
+  bgColor3,
+  bgColor4,
+  bgColor5,
+} from '../../../../utils/GlobalStyles';
 
 const styles = StyleSheet.create({
   background: {
@@ -13,72 +13,60 @@ const styles = StyleSheet.create({
   container1: {
     flex: 1,
     backgroundColor: bgColor1,
+    alignItems: 'center',
+    padding: 10,
   },
-  title: {
-    fontSize: 35,
-    fontWeight: 'bold',
+  FavoriteBTN: {
+    marginRight: 10,
+  },
+  /*   title: {
     color: bgColor5,
-    marginLeft: 70,
-    marginRight: 70,
-    margin: 10,
+    fontSize: 22,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+    marginTop: '30%',
+    marginBottom: '10%',
+    textAlign: 'center',
+    width: '85%',
+  }, */
+  Image: {
+    height: 200,
+    width: '65%',
+    marginTop: '35%',
+    marginBottom: '10%',
+  },
+  descriptionTitle: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    letterSpacing: 0.5,
+    marginBottom: '5%',
+  },
+  description: {
+    color: 'white',
+    fontSize: 15,
+    letterSpacing: 0.5,
+    marginBottom: '15%',
     textAlign: 'center',
   },
-  container2: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  img: {
-    height: 200,
-    width: 240,
+  priceTitle: {
+    color: bgColor3,
+    fontSize: 15,
+    letterSpacing: 0.5,
   },
   addBtn: {
-    backgroundColor: bgColor5,
     height: 40,
-    width: 220,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 20,
-  },
-  txBtn: {
-    color: 'white',
-    fontSize: 25,
-  },
-  tx2: {
-    color: 'white',
-    fontSize: 25,
-    margin: 15,
-    textAlign: 'center',
-    marginTop: 25,
-  },
-  tx3: {
-    color: bgColor3,
-    fontSize: 30,
-    margin: 20,
-    fontWeight: 'bold',
-  },
-  btn2: {
+    width: 150,
     backgroundColor: bgColor5,
-    height: 50,
-    width: 50,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    color: 'white',
-  },
-  container3: {
+    marginTop: '10%',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: '25%',
-    width: '100%',
   },
-  btn3: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  addBtnTitle: {
     color: 'white',
+    fontSize: 15,
+    letterSpacing: 0.5,
+    marginRight: 5,
   },
 });
 

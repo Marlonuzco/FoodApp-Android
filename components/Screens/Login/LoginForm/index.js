@@ -83,10 +83,10 @@ function LoginForm({navigation}) {
               <ActivityIndicator color={'white'} size={30} />
             ) : (
               <ButtonComp
-                tittle={'Log in'}
-                tittleStyle={styles.LoginbtnTx}
-                extraComp={<RenderIcon2 IconColor={'white'} />}
-                ButtonStyle={styles.Loginbtn}
+                title={'Log in'}
+                TitleStyle={styles.LoginbtnTx}
+                children={<RenderIcon2 IconColor={'white'} />}
+                BtnStyle={styles.Loginbtn}
                 onPress={() => formik.handleSubmit()}
               />
             )}

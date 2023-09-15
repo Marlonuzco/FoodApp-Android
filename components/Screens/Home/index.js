@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
@@ -6,13 +6,14 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  TextInput,
   ScrollView,
   ImageBackground,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import {search_categories_and_populars} from '../../../redux/actions/products';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import ButtonComp from '../../Button/index';
 import icon1 from '../../../src/images/iconos/icon2.png';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import Delivery from '../../../src/images/Delivery.png';
@@ -23,36 +24,34 @@ import styles from './styles';
 
 function HomeSreen({navigation}) {
   const dispatch = useDispatch();
+  const [retry, setRetry] = useState(false);
   const {token} = useSelector(store => store.auth);
-  const {categories, populars} = useSelector(store => store.products);
+  const {categories, populars, error} = useSelector(store => store.products);
 
   useEffect(() => {
     const getCategoriesAndPopulars = () => {
       dispatch(search_categories_and_populars(token));
     };
     getCategoriesAndPopulars();
-  }, [dispatch, token]);
+    setRetry(false);
+  }, [dispatch, token, retry]);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
         <View style={styles.container1}>
           <View style={styles.container2}>
-            <Text style={styles.title}>Menú</Text>
-            <TouchableOpacity style={styles.touchable2}>
-              <Image style={styles.img2} source={icon1} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.container3}>
-            <TextInput
-              style={styles.input}
-              placeholder={'Search'}
-              autoCapitalize="none"
-              placeholderTextColor={'black'}
+            <Image style={styles.img2} source={icon1} />
+            <ButtonComp
+              onPress={() => {
+                navigation.navigate('Categories');
+              }}
+              title={'Search products'}
+              TitleStyle={styles.SearchBtnTitle}
+              BtnStyle={styles.SearchBtnScreen}
+              children={<Icon name="search" size={15} color={'black'} />}
             />
-            <TouchableOpacity>
-              <Icon name="search" size={25} style={styles.searchIcon} />
-            </TouchableOpacity>
           </View>
+          {/* Aquí va el searchInput */}
           <View style={styles.container5}>
             <Image source={Delivery} style={styles.imgDelivey} />
             <View style={styles.container6}>
@@ -62,21 +61,18 @@ function HomeSreen({navigation}) {
           </View>
         </View>
         <View>
-          {/*Popular list*/}
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Categories');
-            }}>
-            <Text style={styles.title2}>Categories</Text>
-          </TouchableOpacity>
-          <FlatList
-            ListEmptyComponent={<RenderEmptyComp />}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={categories}
-            keyExtractor={item => item.id}
-            renderItem={item => <RenderItem item={item.item} />}
-          />
+          {/*Categories list*/}
+          <Text style={styles.title2}>Categories</Text>
+          <View style={styles.viewCategories}>
+            <FlatList
+              ListEmptyComponent={<RenderEmptyComp />}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={categories}
+              keyExtractor={item => item.id}
+              renderItem={item => <RenderItem item={item} />}
+            />
+          </View>
         </View>
         {/*Popular list*/}
         <Text style={styles.title2}>Popular</Text>
@@ -92,6 +88,28 @@ function HomeSreen({navigation}) {
             )}
             showsVerticalScrollIndicator={false}
           />
+          {error && (
+            <View style={styles.dataErrorView}>
+              <Text style={styles.dataErrorText}>
+                Verifique su conexión a internet
+              </Text>
+              <ButtonComp
+                onPress={() => {
+                  setRetry(true);
+                }}
+                title={'Retry'}
+                TitleStyle={styles.retryBtnTitle}
+                BtnStyle={styles.retryBtn}
+                children={
+                  <MaterialCommunityIcons
+                    name="cached"
+                    size={20}
+                    color={'black'}
+                  />
+                }
+              />
+            </View>
+          )}
         </View>
       </ScrollView>
     </ImageBackground>

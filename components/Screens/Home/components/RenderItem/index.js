@@ -11,21 +11,20 @@ import styles from './styles';
 //categories list component
 export const RenderItem = ({item}) => {
   const navigation = useNavigation();
+  const {name, photo} = item.item;
   return (
-    <View style={styles.itemContainer}>
-      <TouchableOpacity
-        style={styles.touchable1}
-        onPress={() => {
-          navigation.navigate('ProductsCategories', item);
-        }}>
-        <Image
-          style={styles.imgItem}
-          source={{uri: `${serverUrl}${item.photo}`}}
-          alt="item.photo"
-        />
-        <Text style={styles.itemTitle}>{item.name}</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style={styles.touchable1}
+      onPress={() => {
+        navigation.navigate('ProductsCategories', item);
+      }}>
+      <Image
+        style={styles.imgItem}
+        source={{uri: `${serverUrl}${photo}`}}
+        alt="item.photo"
+      />
+      <Text style={styles.itemTitle}>{name}</Text>
+    </TouchableOpacity>
   );
 };
 

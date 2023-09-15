@@ -12,10 +12,12 @@ export const SET_IN_CART_STATE = 'SET_IN_CART_STATE';
 
 const products_initial_state = {
   isSearching: false,
+  isSearchingProducts: false,
   categories: [],
   products: [],
   populars: [],
   error: false,
+  errorSearchProducts: false,
 };
 
 const products = (state = products_initial_state, action) => {
@@ -43,6 +45,27 @@ const products = (state = products_initial_state, action) => {
         categories: [],
         populars: [],
         error: true,
+      };
+    case SEARCH_PRODUCTS:
+      return {
+        ...state,
+        isSearchingProducts: true,
+        products: [],
+        errorSearchProducts: false,
+      };
+    case SET_PRODUCTS:
+      return {
+        ...state,
+        isSearchingProducts: false,
+        products: action.products,
+        errorSearchProducts: false,
+      };
+    case ERROR_IN_SEARCH_PRODUCTS:
+      return {
+        ...state,
+        isSearchingProducts: false,
+        products: [],
+        errorSearchProducts: true,
       };
     default:
       return state;

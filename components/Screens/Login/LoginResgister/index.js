@@ -135,10 +135,10 @@ function LoginRegisterScreen({navigation}) {
                 onPress={() => {
                   formik.handleSubmit();
                 }}
-                tittle={'Sign Up'}
-                tittleStyle={styles.txTouch}
-                ButtonStyle={styles.touchLoged}
-                extraComp={<RenderIcon2 IconColor={'white'} />}
+                title={'Sign Up'}
+                TitleStyle={styles.txTouch}
+                BtnStyle={styles.touchLoged}
+                children={<RenderIcon2 IconColor={'white'} />}
               />
             )}
           </View>

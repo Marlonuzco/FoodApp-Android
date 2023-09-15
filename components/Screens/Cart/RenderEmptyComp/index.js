@@ -9,7 +9,7 @@ const RenderEmptyComp = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.view}>
-      <Text style={styles.tittle}>No items in cart</Text>
+      <Text style={styles.title}>No items in cart</Text>
       <ButtonComp
         onPress={() => {
           navigation.navigate('Categories');
