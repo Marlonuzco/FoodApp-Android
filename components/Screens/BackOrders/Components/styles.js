@@ -1,22 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {bgColor1, bgColor3} from '../../../utils/GlobalStyles';
+import {bgColor1, bgColor3} from '../../../../utils/GlobalStyles';
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 25,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    margin: 10,
-    color: bgColor3,
-  },
-  container1: {
-    height: '75%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+const sytles = StyleSheet.create({
   renderItem: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -25,12 +10,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     height: 110,
     borderRadius: 20,
-    margin: '5%',
+    margin: 20,
   },
   itemName: {
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
+    margin: 10,
   },
   title2: {
     fontSize: 30,
@@ -40,19 +27,9 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   photo: {
-    height: 80,
-    width: 120,
+    height: 70,
+    width: 110,
     marginRight: 5,
-  },
-  container2: {
-    width: '50%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  container3: {
-    height: '80%',
-    width: '100%',
   },
   container4: {
     height: '90%',
@@ -66,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default sytles;

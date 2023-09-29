@@ -1,33 +1,26 @@
-import React from 'react';
-import {connect, useDispatch} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   FlatList,
   ImageBackground,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import {
-  incrementCount,
-  decrementCount,
-  incremenTotalPrice,
-  decrementTotalPrice,
-  removeFromCart,
-  decrementTotalItems,
-} from '../../../redux/actions/cart';
-import {addOrder, incremenTotalOrders} from '../../../redux/actions/backOrders';
+import {addOrder} from '../../../redux/actions/backOrders';
 
 import RenderItem from './RenderItem';
 import RenderEmptyComp from './RenderEmptyComp';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import styles from './styles';
 
-function CartScreen({cart, navigation}) {
+function CartScreen({navigation}) {
   const dispatch = useDispatch();
+  const {products} = useSelector(store => store.cart);
 
-  const values = cart.products.map(i => i.totalPrice);
+  useEffect(() => {}, [products]);
+
+  const values = products.map(products => products.total_price);
   const initialValues = 0;
   const sumWithInitial = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
@@ -46,10 +39,10 @@ function CartScreen({cart, navigation}) {
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <View style={styles.view1}>
-        <Text style={styles.title}>My cart</Text>
+        <Text style={styles.title}>Shopping Cart</Text>
         <FlatList
           ListEmptyComponent={<RenderEmptyComp />}
-          data={cart.products}
+          data={products}
           keyExtractor={item => item.id}
           renderItem={item => (
             <RenderItem
@@ -67,7 +60,7 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx5}>Total items : </Text>
         </View>
         <View style={styles.container6}>
-          <Text style={styles.tx7}>$ {sumWithInitial}</Text>
+          <Text style={styles.tx7}>$ {sumWithInitial.toFixed(2)}</Text>
         </View>
       </View>
       <View style={styles.container4}>
@@ -75,7 +68,7 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx5}>Delivery Services : </Text>
         </View>
         <View style={styles.container6}>
-          <Text style={styles.tx7}>$ {Delivery}</Text>
+          <Text style={styles.tx7}>$ {Delivery.toFixed(2)}</Text>
         </View>
       </View>
       <View style={styles.container4}>
@@ -83,13 +76,13 @@ function CartScreen({cart, navigation}) {
           <Text style={styles.tx5}>Total to pay : </Text>
         </View>
         <View style={styles.container6}>
-          <Text style={styles.tx7}>$ {TotalToPay()}</Text>
+          <Text style={styles.tx7}>$ {TotalToPay().toFixed(2)}</Text>
         </View>
       </View>
       <TouchableOpacity
         style={styles.btnPay}
         onPress={() => {
-          cart.products.length > 0 && dispatch();
+          products.length > 0 && dispatch(addOrder(products));
         }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>
@@ -97,6 +90,4 @@ function CartScreen({cart, navigation}) {
   );
 }
 
-export default connect(store => ({
-  cart: store.cart,
-}))(CartScreen);
+export default CartScreen;

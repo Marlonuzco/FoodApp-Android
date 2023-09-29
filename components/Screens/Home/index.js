@@ -5,7 +5,6 @@ import {
   Text,
   FlatList,
   Image,
-  TouchableOpacity,
   ScrollView,
   ImageBackground,
 } from 'react-native';
@@ -24,6 +23,7 @@ import styles from './styles';
 
 function HomeSreen({navigation}) {
   const dispatch = useDispatch();
+  const [popularsData, setPopularsData] = useState({});
   const [retry, setRetry] = useState(false);
   const {token} = useSelector(store => store.auth);
   const {categories, populars, error} = useSelector(store => store.products);
@@ -34,7 +34,11 @@ function HomeSreen({navigation}) {
     };
     getCategoriesAndPopulars();
     setRetry(false);
-  }, [dispatch, token, retry]);
+  }, [token, retry]);
+
+  useEffect(() => {
+    setPopularsData(populars);
+  }, [populars]);
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
@@ -81,7 +85,7 @@ function HomeSreen({navigation}) {
             ListEmptyComponent={<RenderEmptyComp />}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={populars}
+            data={popularsData}
             keyExtractor={item => item.id}
             renderItem={item => (
               <RenderItem2 item={item.item} index={item.index} />

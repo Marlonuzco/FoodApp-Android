@@ -13,8 +13,8 @@ export const SET_IN_CART_STATE = 'SET_IN_CART_STATE';
 const products_initial_state = {
   isSearching: false,
   isSearchingProducts: false,
-  categories: [],
   products: [],
+  categories: [],
   populars: [],
   error: false,
   errorSearchProducts: false,

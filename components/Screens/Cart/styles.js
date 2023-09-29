@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     margin: '5%',
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center',
     fontWeight: 'bold',
     margin: 10,
@@ -121,13 +121,13 @@ const styles = StyleSheet.create({
     width: '55%',
   },
   tx5: {
-    fontSize: 22,
+    fontSize: 18,
     margin: 5,
     color: 'white',
   },
   tx7: {
     color: bgColor3,
-    fontSize: 25,
+    fontSize: 22,
     textAlign: 'right',
     marginRight: 7,
     fontWeight: 'bold',

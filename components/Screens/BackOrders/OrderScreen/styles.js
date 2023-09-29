@@ -1,12 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-const bgColor1 = '#000000c0';
-const bgColor3 = '#FFA200';
-const bgColor5 = '#BF1A1A';
+import {bgColor1, bgColor3, bgColor5} from '../../../../utils/GlobalStyles';
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    justifyContent: 'center',
   },
   photo: {
     height: '75%',
@@ -27,9 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   scrollview: {
-    height: '67%',
+    height: '65%',
     width: '100%',
-    marginBottom: 7,
+    margin: 20,
   },
   title: {
     color: bgColor3,
@@ -49,22 +48,26 @@ const styles = StyleSheet.create({
   tx2: {
     color: bgColor3,
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 20,
     margin: 10,
   },
   tx3: {
     color: 'white',
+    fontSize: 13,
+    marginTop: 5,
   },
   tx4: {
     color: bgColor3,
-    fontSize: 22,
+    fontSize: 15,
+    fontWeight: 'bold',
   },
   title2: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 10,
     textAlign: 'center',
+    width: '60%',
   },
   container3: {
     flexDirection: 'row',
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
   },
   tx7: {
     color: bgColor3,
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'right',
     marginRight: 7,
     fontWeight: 'bold',
@@ -120,9 +123,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tx8: {
-    fontSize: 22,
+    fontSize: 20,
     margin: 5,
     color: 'white',
+  },
+  deleteBtn: {
+    marginRight: 10,
   },
 });
 

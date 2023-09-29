@@ -35,9 +35,9 @@ function AccountScreen() {
         </View>
         <View style={styles.container2}>
           <Text style={styles.tx2}>E-mail: {userInfo.email}</Text>
-          <Text style={styles.tx2}>Firstname: {userInfo.firstname}</Text>
-          <Text style={styles.tx2}>LastName: {userInfo.lastname}</Text>
-          <Text style={styles.tx2}>Username: {userInfo.username}</Text>
+          <Text style={styles.tx2}>First name: {userInfo.firstname}</Text>
+          <Text style={styles.tx2}>Last name: {userInfo.lastname}</Text>
+          <Text style={styles.tx2}>User name: {userInfo.username}</Text>
         </View>
         <View style={styles.container3}>
           <ButtonComp

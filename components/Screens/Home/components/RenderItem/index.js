@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
@@ -32,7 +32,29 @@ export const RenderItem = ({item}) => {
 export const RenderItem2 = ({item, index}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const {name, incart, counter, price, photo} = item.product;
+  const [data, setData] = useState(item.product);
+  const {name, incart, counter, price, photo} = data;
+  const {products} = useSelector(store => store.cart);
+  const findProduct = products.find(product => product.id === data.id);
+
+  const handleInCart = () => {
+    if (findProduct) {
+      const updateData = {...findProduct};
+      updateData.incart = true;
+      setData(updateData);
+    } else {
+      setData(item.product);
+    }
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item.product));
+    handleInCart();
+  };
+
+  useEffect(() => {
+    handleInCart();
+  }, [findProduct?.counter, products]);
 
   return (
     <View style={styles.itemContainer2}>
@@ -44,23 +66,20 @@ export const RenderItem2 = ({item, index}) => {
       </TouchableOpacity>
       <View style={styles.itemview2}>
         <Text style={styles.itemTitle2}>{name}</Text>
-        <Text style={styles.price}>Sales for: {price}$</Text>
+        <Text style={styles.price}>Sales for: {price.toFixed(2)}$</Text>
         <TouchableOpacity
           style={styles.addbtn}
           onPress={() => {
-            incart
-              ? navigation.navigate('Cart')
-              : dispatch(addToCart(item.product));
+            incart ? navigation.navigate('Cart') : handleAddToCart();
           }}>
           {incart ? (
             <Text style={styles.txAddBtn}>
               {counter} in
-              <Icon name="shopping-cart" size={12} style={styles.icon} />
+              <Icon name="shopping-cart" size={12} />
             </Text>
           ) : (
             <Text style={styles.txAddBtn}>
-              Add to cart{' '}
-              <Icon name="shopping-cart" size={12} style={styles.icon} />
+              Add to cart <Icon name="shopping-cart" size={12} />
             </Text>
           )}
         </TouchableOpacity>

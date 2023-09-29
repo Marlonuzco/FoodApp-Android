@@ -8,12 +8,9 @@ import FavoritesSreen from '../Screens/FavoriteScreen/index';
 import AccountSreen from '../Screens/Account/index';
 import CartScreen from '../Screens/Cart/index';
 import OrdersScreen from '../Screens/BackOrders/index';
+import {bgColor1, bgColor3, bgColor5} from '../../utils/GlobalStyles';
 
 const Tab = createBottomTabNavigator();
-
-const bgColor1 = '#000000c0';
-const bgColor3 = '#FFA200';
-const bgColor5 = '#BF1A1A';
 
 function Navigation({cart, backOrders}) {
   return (
