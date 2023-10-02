@@ -1,8 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const bgColor1 = '#000000c0';
-const bgColor3 = '#FFA200';
-const bgColor5 = '#BF1A1A';
+import {bgColor1, bgColor3, bgColor5} from '../../../utils/GlobalStyles';
 
 const styles = StyleSheet.create({
   background: {

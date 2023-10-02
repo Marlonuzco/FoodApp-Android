@@ -1,10 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {
-  bgColor1,
-  bgColor3,
-  bgColor4,
-  bgColor5,
-} from '../../../../utils/GlobalStyles';
+
+import {bgColor1, bgColor3, bgColor5} from '../../../../utils/GlobalStyles';
 
 const styles = StyleSheet.create({
   background: {
@@ -19,19 +15,9 @@ const styles = StyleSheet.create({
   FavoriteBTN: {
     marginRight: 10,
   },
-  /*   title: {
-    color: bgColor5,
-    fontSize: 22,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-    marginTop: '30%',
-    marginBottom: '10%',
-    textAlign: 'center',
-    width: '85%',
-  }, */
   Image: {
-    height: 200,
-    width: '65%',
+    height: 215,
+    width: '70%',
     marginTop: '35%',
     marginBottom: '10%',
   },

@@ -6,27 +6,66 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  ActivityIndicator,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {addToCart} from '../../../../redux/actions/cart';
+import {
+  tryToAddToFavorites,
+  tryToRemoveOneFromFavorites,
+} from '../../../../redux/actions/favorites';
+import {serverUrl} from '../../../../axios';
 
 import ButtonComp from '../../../Button/index';
 import img1 from '../../../../src/images/fondo5.jpeg';
+import {bgColor3} from '../../../../utils/GlobalStyles';
 import styles from './styles';
-import {serverUrl} from '../../../../axios';
 
-const HeaderRight = ({}) => {
+const HeaderRight = ({dispatch, data, isFavorite}) => {
+  const auth = useSelector(store => store.auth);
+  const {sendingData} = useSelector(store => store.favorites);
+  const {id} = auth.userInfo;
+  const {token} = auth;
+  const valuesToSend = {user_id: id, product_id: data.id, product: data};
   return (
-    <TouchableOpacity style={styles.FavoriteBTN}>
-      <Icon name="heart" color={'white'} size={30} />
-    </TouchableOpacity>
+    <>
+      {sendingData ? (
+        <ActivityIndicator
+          size={30}
+          color={bgColor3}
+          style={styles.FavoriteBTN}
+        />
+      ) : (
+        <>
+          {isFavorite ? (
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(tryToRemoveOneFromFavorites(valuesToSend, token));
+              }}
+              style={styles.FavoriteBTN}>
+              <Icon name="heart" color={'red'} size={30} solid />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(tryToAddToFavorites(valuesToSend, token));
+              }}
+              style={styles.FavoriteBTN}>
+              <Icon name="heart" color={'white'} size={30} />
+            </TouchableOpacity>
+          )}
+        </>
+      )}
+    </>
   );
 };
 
 function Products({navigation, route}) {
   const dispatch = useDispatch();
   const [data, setData] = useState(route.params);
+  const [isFavorite, setIsFavorite] = useState(false);
   const {products} = useSelector(store => store.cart);
+  const {items} = useSelector(store => store.favorites);
 
   const handleInCart = () => {
     const findProduct = products.find(product => product.id === data.id);
@@ -37,19 +76,29 @@ function Products({navigation, route}) {
     }
   };
 
-  useEffect(() => {
-    handleInCart();
+  const handleInFavorites = () => {
+    const findProduct = items.some(product => product.id === data.id);
+    if (findProduct) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  };
 
+  useEffect(() => {
     navigation.setOptions({
       title: data.name,
-      headerRight: () => <HeaderRight />,
+      headerRight: () => (
+        <HeaderRight data={data} isFavorite={isFavorite} dispatch={dispatch} />
+      ),
     });
-  }, [data.name, products]);
 
+    handleInCart();
+    handleInFavorites();
+  }, [data.name, products, items, isFavorite]);
   return (
     <ImageBackground source={img1} style={styles.background}>
       <View style={styles.container1}>
-        {/*  <Text style={styles.title}>{data.name}</Text> */}
         <Image
           source={{uri: `${serverUrl}${data.photo}`}}
           alt="ImageSource"

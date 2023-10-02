@@ -41,13 +41,12 @@ export const error_in_search_categories = () => ({
   type: ERROR_IN_SEARCH_CATEORIES_AND_POPULARS,
 });
 
-export const search_products = (category_id, token) => async dispatch => {
+export const search_products = (id, token) => async dispatch => {
   dispatch({type: SEARCH_PRODUCTS});
-  console.log('category_id', category_id);
+  console.log('category_id', id);
   try {
-    const response = await axiosInstance.post(
-      productsCategoriesURL,
-      category_id,
+    const response = await axiosInstance.get(
+      `${productsCategoriesURL}?category_id=${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

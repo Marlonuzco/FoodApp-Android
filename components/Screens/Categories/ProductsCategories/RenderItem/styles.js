@@ -49,6 +49,27 @@ const styles = StyleSheet.create({
   ActivityIndicatorView: {
     marginTop: 250,
   },
+  RenderEmptyCompTitle: {
+    color: 'white',
+    margin: 10,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  RenderEmptyComp: {
+    marginTop: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  RetryBtn: {
+    flexDirection: 'row',
+    margin: 25,
+    height: 50,
+    width: 100,
+  },
+  RetryBtnTitle: {
+    fontSize: 15,
+    marginRight: 5,
+  },
 });
 
 export default styles;

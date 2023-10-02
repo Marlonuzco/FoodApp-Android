@@ -8,11 +8,13 @@ import {
   ImageBackground,
 } from 'react-native';
 import {addOrder} from '../../../redux/actions/backOrders';
+import {cartInitialState} from '../../../redux/actions/cart';
 
 import RenderItem from './RenderItem';
 import RenderEmptyComp from './RenderEmptyComp';
 import ImgBg1 from '../../../src/images/fondo3.jpeg';
 import styles from './styles';
+import {bgColor1} from '../../../utils/GlobalStyles';
 
 function CartScreen({navigation}) {
   const dispatch = useDispatch();
@@ -80,9 +82,13 @@ function CartScreen({navigation}) {
         </View>
       </View>
       <TouchableOpacity
-        style={styles.btnPay}
+        style={[
+          styles.btnPay,
+          products.length === 0 && {backgroundColor: bgColor1},
+        ]}
         onPress={() => {
           products.length > 0 && dispatch(addOrder(products));
+          dispatch(cartInitialState());
         }}>
         <Text style={styles.tx6}>Pay Total</Text>
       </TouchableOpacity>

@@ -3,6 +3,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_ONE_TO_CART = 'DELETE_TO_CART';
 export const INCREMENT_COUNT = 'INCREMENT_COUNT';
 export const DECREMENT_COUNT = 'DECREMENT_COUNT';
+export const CART_INITIAL_STATE = 'CART_INITIAL_STATE';
 
 const cart_initial_state = {
   products: [],
@@ -41,6 +42,12 @@ const cart = (state = cart_initial_state, action) => {
         newValues2.total_price = newValues2.total_price;
       }
       return {...state};
+    case CART_INITIAL_STATE:
+      return {
+        ...state,
+        products: [],
+        totalItems: 0,
+      };
     default:
       return state;
   }

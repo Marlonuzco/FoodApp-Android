@@ -21,7 +21,7 @@ function ProductsCategories({route, navigation}) {
 
   useEffect(() => {
     const fetchProducts = () => {
-      dispatch(search_products({category_id: id}, token));
+      dispatch(search_products(id, token));
     };
     navigation.setOptions({
       title: name,
