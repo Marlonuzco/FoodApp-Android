@@ -52,9 +52,13 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   RenderEmptyComp: {
-    marginTop: '60%',
+    marginTop: '50%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  errorText: {
+    color: 'white',
+    fontSize: 15,
   },
 });
 

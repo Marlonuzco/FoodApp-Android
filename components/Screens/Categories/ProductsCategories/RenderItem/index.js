@@ -32,7 +32,7 @@ export const RenderItem = ({item}) => {
       <Text style={styles.title}>{name}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.priceTitle}>Price :</Text>
-        <Text style={styles.price}>{price} $</Text>
+        <Text style={styles.price}>{price.toFixed(2)} $</Text>
       </View>
     </TouchableOpacity>
   );

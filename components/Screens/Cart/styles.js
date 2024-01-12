@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     margin: '5%',
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: 'center',
     fontWeight: 'bold',
     margin: 10,

@@ -43,7 +43,7 @@ export const RenderEmptyComp = () => {
   return (
     <View style={styles.RenderEmptyComp}>
       {searchingData && <ActivityIndicator color={bgColor3} size={35} />}
-      {error && <Text>Error data not found</Text>}
+      {error && <Text style={styles.errorText}>Error data not found</Text>}
       {!searchingData && !error && (
         <Text style={styles.title3}>No items in favorites</Text>
       )}

@@ -5,9 +5,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HomeSreen from '../Screens/Home/index';
 import FavoritesSreen from '../Screens/FavoriteScreen/index';
-import AccountSreen from '../Screens/Account/index';
 import CartScreen from '../Screens/Cart/index';
 import OrdersScreen from '../Screens/BackOrders/index';
+import SettingScreen from '../Screens/Settings';
 import {bgColor1, bgColor3, bgColor5} from '../../utils/GlobalStyles';
 
 const Tab = createBottomTabNavigator();
@@ -79,12 +79,13 @@ function Navigation({cart, backOrders}) {
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={AccountSreen}
+        name="Settings"
+        component={SettingScreen}
         options={{
-          tabBarLabel: 'Account',
+          headerShown: true,
+          tabBarLabel: 'Settings',
           tabBarIcon: ({size, color}) => (
-            <Icon name="user-alt" size={size} color={color} />
+            <Icon name="cog" size={size} color={color} />
           ),
         }}
       />

@@ -26,10 +26,10 @@ export const getUserFavorites = (id, token) => async dispatch => {
     });
     if (response.status === 200) {
       dispatch(setUserFavorites(response.data.products));
-    } else {
+    } /* else {
       dispatch(errorToGetUserFavorites());
       console.log('Error en getUserFavorites');
-    }
+    } */
   } catch (error) {
     dispatch(errorToGetUserFavorites());
     console.log('Error en getUserFavorites', error);

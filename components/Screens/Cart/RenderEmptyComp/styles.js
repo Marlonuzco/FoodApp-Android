@@ -4,7 +4,7 @@ import {bgColor1, bgColor3} from '../../../../utils/GlobalStyles';
 
 const styles = StyleSheet.create({
   view: {
-    marginTop: '50%',
+    marginTop: '60%',
     justifyContent: 'center',
     alignItems: 'center',
   },

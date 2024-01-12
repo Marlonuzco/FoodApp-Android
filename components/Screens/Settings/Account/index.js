@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import {View, Text, Image, ScrollView, ImageBackground} from 'react-native';
-import {logout} from '../../../redux/actions/auth';
+import {logout} from '../../../../redux/actions/auth';
 
-import ButtonComp from '../../Button/index';
+import ButtonComp from '../../../Button/index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import ImgBg1 from '../../../src/images/fondo2.jpeg';
-import {defaultUserImgUrl} from '../../../utils/utils';
-import {serverUrl} from '../../../axios';
+import ImgBg1 from '../../../../src/images/fondo2.jpeg';
+import {defaultUserImgUrl} from '../../../../utils/utils';
+import {serverUrl} from '../../../../axios';
 
 import styles from './styles';
 
@@ -24,7 +24,7 @@ function AccountScreen() {
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>
         <View style={styles.container1}>
-          <Text style={styles.title}>Account</Text>
+          {/*   <Text style={styles.title}>Account</Text> */}
           <Text style={styles.title2}> User Details : </Text>
           <Image
             style={styles.img1}

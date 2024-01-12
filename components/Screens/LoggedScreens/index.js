@@ -6,6 +6,11 @@ import Navigation from '../../Navigation';
 import Products from '../Categories/Products/index';
 import ProductsCategories from '../Categories/ProductsCategories';
 import OrderScreen from '../BackOrders/OrderScreen/index';
+import AccountScreen from '../Settings/Account/index';
+import AboutScreen from '../Settings/About/index';
+import TermsScreen from '../Settings/TermsScreen/index';
+import ThemesScreen from '../Settings/Themes/index';
+import LanguagesScreen from '../Settings/Languages/index';
 import {bgColor3, bgColor5} from '../../../utils/GlobalStyles';
 
 const Stack = createStackNavigator();
@@ -107,6 +112,40 @@ function LoggedScreens({navigation}) {
             },
           }}
         />
+        <Stack.Screen
+          name="AccountScreen"
+          component={AccountScreen}
+          options={{
+            headerLeftContainerStyle: {
+              marginTop: 10,
+              backgroundColor: bgColor5,
+              borderRadius: 15,
+              marginLeft: 10,
+            },
+            headerRightContainerStyle: {
+              marginTop: 10,
+              marginRight: 10,
+            },
+            headerTitleStyle: {
+              width: '100%',
+              marginTop: 10,
+              color: 'white',
+              textAlign: 'center',
+              marginRight: '20%',
+            },
+            headerTransparent: true,
+            headerTintColor: 'white',
+            headerTitleContainerStyle: {
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+            },
+          }}
+        />
+        <Stack.Screen name="LanguagesScreen" component={LanguagesScreen} />
+        <Stack.Screen name="TermsScreen" component={TermsScreen} />
+        <Stack.Screen name="ThemesScreen" component={ThemesScreen} />
+        <Stack.Screen name="AboutScreen" component={AboutScreen} />
       </Stack.Navigator>
     </>
   );

@@ -17,7 +17,7 @@ function ProductsCategories({route, navigation}) {
   const [retry, setRetry] = useState(false);
   const {token} = useSelector(store => store.auth);
   const {products} = useSelector(store => store.products);
-  const {name, id} = route.params?.item;
+  const {name, id} = route.params.item;
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -29,7 +29,7 @@ function ProductsCategories({route, navigation}) {
     });
     fetchProducts();
     setRetry(false);
-  }, [token, retry]);
+  }, [token, id, retry, dispatch, navigation, name]);
   return (
     <ImageBackground source={img1} style={styles.background}>
       <View style={styles.productsContainer}>
