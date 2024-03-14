@@ -8,7 +8,7 @@ import img1 from '../../../../src/images/fondo5.jpeg';
 import styles from './styles';
 import {search_products} from '../../../../redux/actions/products';
 
-const HeaderRight = ({}) => {
+const HeaderRight = () => {
   return <SearchInput setInputStyle={styles.SearchInput} />;
 };
 
@@ -17,7 +17,7 @@ function ProductsCategories({route, navigation}) {
   const [retry, setRetry] = useState(false);
   const {token} = useSelector(store => store.auth);
   const {products} = useSelector(store => store.products);
-  const {name, id} = route.params.item;
+  const {name, id} = route.params;
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -29,7 +29,9 @@ function ProductsCategories({route, navigation}) {
     });
     fetchProducts();
     setRetry(false);
-  }, [token, id, retry, dispatch, navigation, name]);
+  }, [token, id, retry, name]);
+
+  console.log('route.params', route.params);
   return (
     <ImageBackground source={img1} style={styles.background}>
       <View style={styles.productsContainer}>
@@ -42,7 +44,7 @@ function ProductsCategories({route, navigation}) {
             />
           }
           data={products}
-          keyExtractor={item => item.id}
+          keyExtractor={(item, key) => key}
           renderItem={item => <RenderItem item={item} />}
         />
       </View>

@@ -5,13 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles';
 import {bgColor3} from '../../utils/GlobalStyles';
 
-const SearchInput = ({
-  value,
-  onChangeText,
-  onPressSearch,
-  placeHolder,
-  setInputStyle,
-}) => {
+const SearchInput = ({value, onChangeText, placeHolder, setInputStyle}) => {
   const [onFocus, setOnFocus] = useState(false);
   return (
     <View
@@ -34,7 +28,7 @@ const SearchInput = ({
           setOnFocus(false);
         }}
       />
-      <TouchableOpacity style={styles.SearchBtn} onPress={onPressSearch}>
+      <TouchableOpacity style={styles.SearchBtn}>
         <Icon name="search" size={15} color={'black'} />
       </TouchableOpacity>
     </View>

@@ -39,6 +39,7 @@ function HomeSreen({navigation}) {
   useEffect(() => {
     setPopularsData(populars);
   }, [populars]);
+
   return (
     <ImageBackground style={styles.background} source={ImgBg1}>
       <ScrollView>

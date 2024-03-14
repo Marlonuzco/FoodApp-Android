@@ -16,7 +16,7 @@ export const RenderItem = ({item}) => {
     <TouchableOpacity
       style={styles.touchable1}
       onPress={() => {
-        navigation.navigate('ProductsCategories', item);
+        navigation.navigate('ProductsCategories', item.item);
       }}>
       <Image
         style={styles.imgItem}

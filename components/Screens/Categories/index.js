@@ -8,15 +8,32 @@ import SearchInput from '../../SearchInput';
 import img1 from '../../../src/images/fondo5.jpeg';
 import styles from './styles';
 
-const HeaderRight = ({}) => {
-  return <SearchInput setInputStyle={styles.SearchInput} />;
+const HeaderRight = ({onChangeText}) => {
+  return (
+    <SearchInput
+      onChangeText={onChangeText}
+      setInputStyle={styles.SearchInput}
+    />
+  );
 };
 
 function CategoriesSreen({navigation}) {
   const dispatch = useDispatch();
-  const [retry, setRetry] = useState(false);
   const {token} = useSelector(store => store.auth);
   const {categories} = useSelector(store => store.products);
+  const [data, setData] = useState(categories);
+  const [retry, setRetry] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const onChangeSearch = values => {
+    setSearch(values);
+  };
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <HeaderRight onChangeText={onChangeSearch} />,
+    });
+  }, [navigation]);
 
   useEffect(() => {
     const fetchCategoriesAndPopular = () => {
@@ -24,15 +41,26 @@ function CategoriesSreen({navigation}) {
         dispatch(search_categories_and_populars(token));
       }
     };
-    navigation.setOptions({headerRight: () => <HeaderRight />});
     fetchCategoriesAndPopular();
     setRetry(false);
-  }, [navigation, retry]);
+  }, [dispatch, token, categories, retry]);
+
+  useEffect(() => {
+    const filterData = () => {
+      let newDataFilteres = categories.filter(dataValue => {
+        return dataValue.name.toLowerCase().includes(search.toLowerCase());
+      });
+      setData(newDataFilteres);
+    };
+
+    filterData();
+  }, [search, categories]);
+
   return (
     <ImageBackground source={img1} style={styles.background}>
       <View style={styles.CategoriesContainer}>
         <FlatList
-          data={categories}
+          data={data}
           keyExtractor={item => item.id}
           renderItem={item => <RenderItem item={item} />}
           ListEmptyComponent={
